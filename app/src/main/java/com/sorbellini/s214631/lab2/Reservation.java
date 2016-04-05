@@ -12,7 +12,6 @@ public class Reservation {
     public ArrayList<Dish> orderedDishes;
     private String time;
     private String comment;
-    private String test;
 
     public Reservation(){
         this.customer = null;
