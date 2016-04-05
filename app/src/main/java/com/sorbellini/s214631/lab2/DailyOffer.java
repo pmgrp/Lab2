@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by eugeniosorbellini on 01/04/16.
  */
 public class DailyOffer {
-    ArrayList<Dish> dishes;
+    public ArrayList<Dish> dishes;
 
+    public DailyOffer() { this.dishes = null; }
 }
