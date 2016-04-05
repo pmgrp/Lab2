@@ -15,10 +15,23 @@ public class Restaurant {
     private String restaurantEmail;
     private String restaurantWebsite;
     private String restaurantPiva;
-    private Bitmap restaurantPicture;
+    private Bitmap restaurantPhoto;
     private OpeningHours openingHours;
-    private ArrayList<Reservation>;
-    private ArrayList<DailyOffer>;
+    public ArrayList<Reservation> reservations;
+    public ArrayList<DailyOffer> dailyOffers;
+
+    public Restaurant(){
+        this.restaurantName = null;
+        this.restaurantPhone = null;
+        this.restaurantAddress = null;
+        this.restaurantEmail = null;
+        this.restaurantWebsite = null;
+        this.restaurantPiva = null;
+        this.restaurantPhoto = null;
+        this.openingHours = null;
+        this.reservations = null;
+        this.dailyOffers = null;
+    }
 
 
     //getter
@@ -46,39 +59,44 @@ public class Restaurant {
         return restaurantPiva;
     }
 
-    public Bitmap getRestaurantPicture(){
-        return restaurantPicture;
+    public Bitmap getRestaurantPhoto(){
+        return restaurantPhoto;
     }
 
+    public OpeningHours getOpeningHours(){ return  openingHours; }
 
-    //TODO
+
     //setter
-    public String setRestaurantName() {
-        return restaurantName;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public String getRestaurantPhone() {
-        return restaurantPhone;
+    public void setRestaurantPhone(String restaurantPhone) {
+        this.restaurantPhone = restaurantPhone;
     }
 
-    public Address getRestaurantAddress(){
-        return restaurantAddress;
+    public void setRestaurantAddress(Address restaurantAddress){
+        this.restaurantAddress = restaurantAddress;
     }
 
-    public String getRestaurantEmail() {
-        return restaurantEmail;
+    public void setRestaurantEmail(String restaurantEmail) {
+        this.restaurantEmail = restaurantEmail;
     }
 
-    public String getRestaurantWebsite() {
-        return restaurantWebsite;
+    public void setRestaurantWebsite(String restaurantWebsite) {
+        this.restaurantWebsite = restaurantWebsite;
     }
 
-    public String getRestaurantPiva() {
-        return restaurantPiva;
+    public void setRestaurantPiva(String restaurantPiva) {
+        this.restaurantPiva = restaurantPiva;
     }
 
-    public Bitmap getRestaurantPicture(){
-        return restaurantPicture;
+    public void setRestaurantPhoto(Bitmap restaurantPhoto){
+        this.restaurantPhoto = restaurantPhoto;
+    }
+
+    public void setOpeningHours(OpeningHours openingHours){
+        this.openingHours = openingHours;
     }
 
 
