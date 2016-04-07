@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
     ArrayList<Reservation> reservations;
 
     ShResAdapter(ArrayList<Reservation> reservations){
-        this.reservations =reservations;
+        this.reservations = reservations;
     }
 
     public static class ReservationViewHolder extends RecyclerView.ViewHolder {
@@ -26,6 +27,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         TextView customerSurname;
         TextView customerPhone;
         TextView lunchTime;
+        Button detailsButton;
 
         ReservationViewHolder(View itemView){
             super(itemView);
@@ -34,6 +36,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             customerSurname = (TextView)itemView.findViewById(R.id.customer_surname);
             customerPhone = (TextView)itemView.findViewById(R.id.customer_phone);
             lunchTime = (TextView)itemView.findViewById(R.id.lunch_time);
+            detailsButton = (Button)itemView.findViewById(R.id.reservation_details);
         }
     }
 
@@ -55,6 +58,12 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         reservationViewHolder.customerSurname.setText(reservations.get(i).getCustomer().getSurname());
         reservationViewHolder.customerPhone.setText(reservations.get(i).getCustomer().getPhone());
         reservationViewHolder.lunchTime.setText(reservations.get(i).getTime());
+        reservationViewHolder.detailsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+            }
+        });
     }
 
     @Override

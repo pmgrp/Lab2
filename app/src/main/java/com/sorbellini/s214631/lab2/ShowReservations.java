@@ -20,7 +20,10 @@ public class ShowReservations extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+
+        //dummy data for test
+        Restaurant restaurant = new Restaurant();
+        ArrayList<Reservation> reservations = restaurant.reservations;
         Customer cus1 = new Customer();
         cus1.setName("Pippo");
         cus1.setSurname("Bianchi");
