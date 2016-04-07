@@ -1,5 +1,6 @@
 package com.sorbellini.s214631.lab2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Day monday = new Day(1);
 
     }
 
@@ -42,5 +42,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showReservations(View view) {
+
+        Intent show_reservations = new Intent(this, ShowReservations.class);
+        startActivity(show_reservations);
     }
 }

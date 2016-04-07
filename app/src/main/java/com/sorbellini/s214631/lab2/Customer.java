@@ -6,6 +6,7 @@ package com.sorbellini.s214631.lab2;
 public class Customer {
     private String name;
     private String surname;
+    private String phone;
 
     //constructor
     public Customer(){
@@ -16,10 +17,12 @@ public class Customer {
     //getter
     public String getName(){ return this.name; }
     public String getSurname(){ return this.surname; }
+    public String getPhone(){ return this.phone; }
 
     //setter
     public void setName(String name){ this.name = name; }
     public void setSurname(String surname){ this.surname = surname; }
+    public void setPhone(String phone){ this.phone = phone; }
 }
 
 

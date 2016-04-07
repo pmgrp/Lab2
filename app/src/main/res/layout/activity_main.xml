@@ -38,13 +38,14 @@
                 android:id="@+id/reservation"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_image_test"/>
+                android:src="@drawable/ic_image_test"
+                android:onClick="showReservations"/>
             <TextView
                 android:id="@+id/reservation_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Hello World!"/>
+                android:text="Show Reservations!"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
