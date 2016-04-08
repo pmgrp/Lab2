@@ -1,11 +1,14 @@
 package com.sorbellini.s214631.lab2;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         TextView customerPhone;
         TextView lunchTime;
         Button detailsButton;
+        ImageView image;
 
         ReservationViewHolder(View itemView){
             super(itemView);
@@ -37,6 +41,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             customerPhone = (TextView)itemView.findViewById(R.id.customer_phone);
             lunchTime = (TextView)itemView.findViewById(R.id.lunch_time);
             detailsButton = (Button)itemView.findViewById(R.id.reservation_details);
+            image = (ImageView)itemView.findViewById(R.id.image);
         }
     }
 
@@ -53,7 +58,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
     }
 
     @Override
-    public void onBindViewHolder(ReservationViewHolder reservationViewHolder, int i) {
+    public void onBindViewHolder(final ReservationViewHolder reservationViewHolder, int i) {
         reservationViewHolder.customerName.setText(reservations.get(i).getCustomer().getName());
         reservationViewHolder.customerSurname.setText(reservations.get(i).getCustomer().getSurname());
         reservationViewHolder.customerPhone.setText(reservations.get(i).getCustomer().getPhone());
@@ -61,9 +66,14 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         reservationViewHolder.detailsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                Intent in = new Intent(v.getContext(), ReservationDetails.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("reservation", reservations.get(reservationViewHolder.getAdapterPosition()));
+                in.putExtras(bundle);
+                v.getContext().startActivity(in);
             }
         });
+        reservationViewHolder.image.setImageURI(reservations.get(i).orderedDishes.get(0).getPhoto());
     }
 
     @Override

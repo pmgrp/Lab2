@@ -82,6 +82,11 @@
                 android:layout_below="@id/customer_phone"
                 android:layout_marginTop="16dp"
                 android:text="Show Orders"/>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"/>
 
 
 

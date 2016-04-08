@@ -27,6 +27,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
+        <activity android:name=".ReservationDetails"></activity>
     </application>
 
 </manifest>

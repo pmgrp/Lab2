@@ -1,17 +1,21 @@
 package com.sorbellini.s214631.lab2;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.net.URI;
 
 /**
  * Created by eugeniosorbellini on 01/04/16.
  */
-public class Dish implements Parcelable {
-    float price;
-    Bitmap photo;
-    String description;
-    int availability;
+public class Dish implements Parcelable{
+    private float price;
+    private Uri photo;
+    private String description;
+    private int availability;
 
     //constructor
     public Dish(){
@@ -23,15 +27,16 @@ public class Dish implements Parcelable {
 
     //getter
     public float getPrice() { return this.price; }
-    public Bitmap getPhoto() { return this.photo; }
+    public Uri getPhoto() { return this.photo; }
     public String getDescription() { return this.description; }
     public int getAvailability() { return this.availability; }
 
     //setter
     public void setPrice(float price) { this.price =price; }
-    public void setPhoto(Bitmap photo) { this.photo = photo; }
+    public void setPhoto(Uri photo) { this.photo = photo; }
     public void setDescription(String description) { this.description = description; }
     public void setAvailability(int availability) { this.availability = availability; }
+
 
     @Override
     public int describeContents(){
@@ -41,7 +46,7 @@ public class Dish implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeFloat(this.price);
-        this.photo.writeToParcel(dest, 0);
+        dest.writeParcelable(this.photo, flags);
         dest.writeString(this.description);
         dest.writeInt(this.availability);
     }
@@ -60,7 +65,7 @@ public class Dish implements Parcelable {
     //De-parcel object
     public Dish(Parcel in){
         this.price = in.readFloat();
-        this.photo = Bitmap.CREATOR.createFromParcel(in);
+        this.photo = in.readParcelable(Uri.class.getClassLoader());
         this.description = in.readString();
         this.price = in.readInt();
     }

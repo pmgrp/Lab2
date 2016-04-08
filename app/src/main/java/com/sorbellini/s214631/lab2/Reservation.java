@@ -3,6 +3,7 @@ package com.sorbellini.s214631.lab2;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class Reservation implements Parcelable {
 
     public Reservation(){
         this.customer = null;
-        this.orderedDishes = null;
+        this.orderedDishes = new ArrayList<Dish>();
         this.time = null;
         this.comment = null;
     }
@@ -38,6 +39,7 @@ public class Reservation implements Parcelable {
     }
 
     public void setComment(String comment){ this.comment = comment; }
+
 
     @Override
     public int describeContents(){
@@ -74,4 +76,5 @@ public class Reservation implements Parcelable {
         this.time = in.readString();
         this.comment = in.readString();
     }
+
 }

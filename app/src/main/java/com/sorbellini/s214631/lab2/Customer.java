@@ -3,10 +3,12 @@ package com.sorbellini.s214631.lab2;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by eugeniosorbellini on 01/04/16.
  */
-public class Customer implements Parcelable {
+public class Customer implements Parcelable{
     private String name;
     private String surname;
     private String phone;
@@ -26,6 +28,7 @@ public class Customer implements Parcelable {
     public void setName(String name){ this.name = name; }
     public void setSurname(String surname){ this.surname = surname; }
     public void setPhone(String phone){ this.phone = phone; }
+
 
     @Override
     public int describeContents(){
@@ -54,6 +57,7 @@ public class Customer implements Parcelable {
         this.name = in.readString();
         this.surname = in.readString();
     }
+
 }
 
 
