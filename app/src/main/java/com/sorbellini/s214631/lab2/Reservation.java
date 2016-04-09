@@ -51,13 +51,13 @@ public class Reservation implements Parcelable {
         //write inner class
         dest.writeParcelable(this.customer, flags);
         //write list of classes
-        dest.writeTypedList(this.orderedDishes);
+        //dest.writeTypedList(this.orderedDishes);
         dest.writeString(this.time);
         dest.writeString(this.comment);
     }
 
     //Creator
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Parcelable.Creator<Reservation> CREATOR = new Parcelable.Creator<Reservation>() {
         public Reservation createFromParcel(Parcel in) {
             return new Reservation(in);
         }
@@ -72,7 +72,7 @@ public class Reservation implements Parcelable {
         //read inner class
         this.customer = in.readParcelable(Customer.class.getClassLoader());
         //read array list of classes
-        in.readTypedList(this.orderedDishes, Dish.CREATOR);
+        //in.readTypedList(this.orderedDishes, Dish.CREATOR);
         this.time = in.readString();
         this.comment = in.readString();
     }

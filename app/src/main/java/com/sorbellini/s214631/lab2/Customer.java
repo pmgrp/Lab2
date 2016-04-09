@@ -42,7 +42,7 @@ public class Customer implements Parcelable{
     }
 
     //Creator
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>() {
         public Customer createFromParcel(Parcel in) {
             return new Customer(in);
         }

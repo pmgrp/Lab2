@@ -31,7 +31,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         TextView customerPhone;
         TextView lunchTime;
         Button detailsButton;
-        ImageView image;
+        //ImageView image;
 
         ReservationViewHolder(View itemView){
             super(itemView);
@@ -41,7 +41,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             customerPhone = (TextView)itemView.findViewById(R.id.customer_phone);
             lunchTime = (TextView)itemView.findViewById(R.id.lunch_time);
             detailsButton = (Button)itemView.findViewById(R.id.reservation_details);
-            image = (ImageView)itemView.findViewById(R.id.image);
+            //image = (ImageView)itemView.findViewById(R.id.image);
         }
     }
 
@@ -67,13 +67,13 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             @Override
             public void onClick(View v){
                 Intent in = new Intent(v.getContext(), ReservationDetails.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("reservation", reservations.get(reservationViewHolder.getAdapterPosition()));
-                in.putExtras(bundle);
+                in.putParcelableArrayListExtra("orderedDishes",
+                        (ArrayList)reservations.get(reservationViewHolder.getAdapterPosition()).orderedDishes);
+                in.putExtra("reservation", reservations.get(reservationViewHolder.getAdapterPosition()));
                 v.getContext().startActivity(in);
             }
         });
-        reservationViewHolder.image.setImageURI(reservations.get(i).orderedDishes.get(0).getPhoto());
+        //reservationViewHolder.image.setImageURI(reservations.get(i).orderedDishes.get(0).getPhoto());
     }
 
     @Override

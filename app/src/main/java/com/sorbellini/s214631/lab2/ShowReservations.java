@@ -45,11 +45,13 @@ public class ShowReservations extends AppCompatActivity {
         cus1.setName("Pippo");
         cus1.setSurname("Bianchi");
         cus1.setPhone("123456789012");
-        for(int i=0;i<1;i++){
+        for(int i=0;i<3;i++){
             Reservation res = new Reservation();
             res.setCustomer(cus1);
             res.setTime("13:00");
             res.setComment("need big table");
+            res.orderedDishes.add(dish1);
+            res.orderedDishes.add(dish1);
             res.orderedDishes.add(dish1);
             reservations.add(res);
         }
@@ -59,6 +61,9 @@ public class ShowReservations extends AppCompatActivity {
         rv.setLayoutManager(llm);
         ShResAdapter adapter = new ShResAdapter(reservations);
         rv.setAdapter(adapter);
+
+
+
 
 
 

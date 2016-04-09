@@ -46,13 +46,13 @@ public class Dish implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeFloat(this.price);
-        dest.writeParcelable(this.photo, flags);
+        dest.writeString(this.photo.toString());
         dest.writeString(this.description);
         dest.writeInt(this.availability);
     }
 
     //Creator
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Parcelable.Creator<Dish> CREATOR = new Parcelable.Creator<Dish>() {
         public Dish createFromParcel(Parcel in) {
             return new Dish(in);
         }
@@ -65,9 +65,9 @@ public class Dish implements Parcelable{
     //De-parcel object
     public Dish(Parcel in){
         this.price = in.readFloat();
-        this.photo = in.readParcelable(Uri.class.getClassLoader());
+        this.photo = Uri.parse(in.readString());
         this.description = in.readString();
-        this.price = in.readInt();
+        this.availability = in.readInt();
     }
 
 }
