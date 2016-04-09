@@ -16,18 +16,52 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.65"
             android:id="@+id/reservation_details"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="0.3">
+            android:layout_weight="0.25">
+            <TextView
+                android:id="@+id/reservation_comment_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Customer Comments"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <TextView
                 android:id="@+id/reservation_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textSize="16sp"
+                android:text="Reservation Comment"/>
+            </ScrollView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.10">
+            <Button
+                android:id="@+id/reservation_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Confirm"/>
+            <Button
+                android:id="@+id/reservation_reject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Reject"/>
         </LinearLayout>
 
     </LinearLayout>

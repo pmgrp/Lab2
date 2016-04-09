@@ -31,6 +31,8 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
         TextView dishDescription;
         TextView dishPrice;
         TextView dishAvailability;
+        Button reservationConfirm;
+        Button reservationReject;
 
         DishViewHolder(View itemView){
             super(itemView);
@@ -58,7 +60,7 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
     public void onBindViewHolder(final DishViewHolder dishViewHolder, int i) {
         dishViewHolder.dishImage.setImageURI(orderedDishes.get(i).getPhoto());
         dishViewHolder.dishDescription.setText(orderedDishes.get(i).getDescription());
-        dishViewHolder.dishPrice.setText(String.format(Locale.getDefault(),"%f", orderedDishes.get(i).getPrice()));
+        dishViewHolder.dishPrice.setText(String.format(Locale.getDefault(),"%.2f", orderedDishes.get(i).getPrice()) + "€");
         dishViewHolder.dishAvailability.setText(String.format(Locale.getDefault(),"%d", orderedDishes.get(i).getAvailability()));
     }
 

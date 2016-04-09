@@ -12,22 +12,28 @@ import java.util.Date;
  * Created by eugeniosorbellini on 01/04/16.
  */
 public class Reservation implements Parcelable {
+    public static final int ARRIVED = 0;
+    public static final int CONFIRMED = 1;
+    public static final int REJECTED = 2;
     private Customer customer;
     public ArrayList<Dish> orderedDishes;
     private String time;
     private String comment;
+    private int status;
 
     public Reservation(){
         this.customer = null;
         this.orderedDishes = new ArrayList<Dish>();
         this.time = null;
         this.comment = null;
+        this.status = ARRIVED;
     }
 
     //getter
     public Customer getCustomer(){ return this.customer; }
     public String getTime(){ return this.time; }
     public String getComment(){ return this.comment; }
+    public int getStatus(){ return this.status; }
 
     //setter
     public void setCustomer(Customer customer){
@@ -40,6 +46,8 @@ public class Reservation implements Parcelable {
 
     public void setComment(String comment){ this.comment = comment; }
 
+    public void setStatus(int status){ this.status = status; }
+
 
     @Override
     public int describeContents(){
@@ -51,9 +59,10 @@ public class Reservation implements Parcelable {
         //write inner class
         dest.writeParcelable(this.customer, flags);
         //write list of classes
-        //dest.writeTypedList(this.orderedDishes);
+        dest.writeTypedList(this.orderedDishes);
         dest.writeString(this.time);
         dest.writeString(this.comment);
+        dest.writeInt(this.status);
     }
 
     //Creator
@@ -72,9 +81,10 @@ public class Reservation implements Parcelable {
         //read inner class
         this.customer = in.readParcelable(Customer.class.getClassLoader());
         //read array list of classes
-        //in.readTypedList(this.orderedDishes, Dish.CREATOR);
+        this.orderedDishes = in.createTypedArrayList(Dish.CREATOR);
         this.time = in.readString();
         this.comment = in.readString();
+        this.status = in.readInt();
     }
 
 }

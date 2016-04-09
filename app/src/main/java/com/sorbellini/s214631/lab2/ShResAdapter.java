@@ -67,9 +67,10 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             @Override
             public void onClick(View v){
                 Intent in = new Intent(v.getContext(), ReservationDetails.class);
-                in.putParcelableArrayListExtra("orderedDishes",
-                        (ArrayList)reservations.get(reservationViewHolder.getAdapterPosition()).orderedDishes);
-                in.putExtra("reservation", reservations.get(reservationViewHolder.getAdapterPosition()));
+                //in.putParcelableArrayListExtra("orderedDishes",
+                   //     (ArrayList)reservations.get(reservationViewHolder.getAdapterPosition()).orderedDishes);
+                in.putParcelableArrayListExtra("reservations", reservations);
+                in.putExtra("index", reservationViewHolder.getAdapterPosition());
                 v.getContext().startActivity(in);
             }
         });
