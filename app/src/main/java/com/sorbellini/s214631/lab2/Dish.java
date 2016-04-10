@@ -12,8 +12,8 @@ import java.net.URI;
  * Created by eugeniosorbellini on 01/04/16.
  */
 public class Dish implements Parcelable{
-    private float price;
-    private Uri photo;
+    private double price;
+    private String photo;
     private String description;
     private int availability;
 
@@ -26,14 +26,14 @@ public class Dish implements Parcelable{
     }
 
     //getter
-    public float getPrice() { return this.price; }
-    public Uri getPhoto() { return this.photo; }
+    public double getPrice() { return this.price; }
+    public String getPhoto() { return this.photo; }
     public String getDescription() { return this.description; }
     public int getAvailability() { return this.availability; }
 
     //setter
-    public void setPrice(float price) { this.price =price; }
-    public void setPhoto(Uri photo) { this.photo = photo; }
+    public void setPrice(double price) { this.price =price; }
+    public void setPhoto(String photo) { this.photo = photo; }
     public void setDescription(String description) { this.description = description; }
     public void setAvailability(int availability) { this.availability = availability; }
 
@@ -45,8 +45,8 @@ public class Dish implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        dest.writeFloat(this.price);
-        dest.writeString(this.photo.toString());
+        dest.writeDouble(this.price);
+        dest.writeString(this.photo);
         dest.writeString(this.description);
         dest.writeInt(this.availability);
     }
@@ -64,8 +64,8 @@ public class Dish implements Parcelable{
 
     //De-parcel object
     public Dish(Parcel in){
-        this.price = in.readFloat();
-        this.photo = Uri.parse(in.readString());
+        this.price = in.readDouble();
+        this.photo = in.readString();
         this.description = in.readString();
         this.availability = in.readInt();
     }

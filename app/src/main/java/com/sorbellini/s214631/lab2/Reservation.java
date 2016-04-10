@@ -15,6 +15,7 @@ public class Reservation implements Parcelable {
     public static final int ARRIVED = 0;
     public static final int CONFIRMED = 1;
     public static final int REJECTED = 2;
+    public static final int COMPLETED = 3;
     private Customer customer;
     public ArrayList<Dish> orderedDishes;
     private String time;
@@ -23,7 +24,7 @@ public class Reservation implements Parcelable {
 
     public Reservation(){
         this.customer = null;
-        this.orderedDishes = new ArrayList<Dish>();
+        this.orderedDishes = new ArrayList<>();
         this.time = null;
         this.comment = null;
         this.status = ARRIVED;

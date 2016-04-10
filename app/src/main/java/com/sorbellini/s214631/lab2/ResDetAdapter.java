@@ -1,6 +1,7 @@
 package com.sorbellini.s214631.lab2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -31,8 +32,6 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
         TextView dishDescription;
         TextView dishPrice;
         TextView dishAvailability;
-        Button reservationConfirm;
-        Button reservationReject;
 
         DishViewHolder(View itemView){
             super(itemView);
@@ -58,7 +57,7 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
 
     @Override
     public void onBindViewHolder(final DishViewHolder dishViewHolder, int i) {
-        dishViewHolder.dishImage.setImageURI(orderedDishes.get(i).getPhoto());
+        dishViewHolder.dishImage.setImageURI(Uri.parse(orderedDishes.get(i).getPhoto()));
         dishViewHolder.dishDescription.setText(orderedDishes.get(i).getDescription());
         dishViewHolder.dishPrice.setText(String.format(Locale.getDefault(),"%.2f", orderedDishes.get(i).getPrice()) + "€");
         dishViewHolder.dishAvailability.setText(String.format(Locale.getDefault(),"%d", orderedDishes.get(i).getAvailability()));

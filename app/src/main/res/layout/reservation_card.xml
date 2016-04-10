@@ -48,6 +48,23 @@
                 android:textSize="16sp"
                 android:text="Surname"/>
             <TextView
+                android:id="@+id/reservation_status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Status"/>
+            <TextView
+                android:id="@+id/reservation_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reservation_status_title"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:text="status"/>
+            <TextView
                 android:id="@+id/customer_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,20 +90,33 @@
                 android:paddingTop="4dp"
                 android:textSize="16sp"
                 android:text="hh:mm"/>
-            <Button
-                android:id="@+id/reservation_details"
+            <TextView
+                android:id="@+id/reservation_tot_price_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/customer_phone"
+                android:paddingTop="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Total Price"/>
+            <TextView
+                android:id="@+id/reservation_tot_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reservation_tot_price_title"
+                android:layout_alignParentRight="true"
+                android:paddingTop="4dp"
+                android:textSize="16sp"
+                android:text="price"/>
+            <Button
+                android:id="@+id/reservation_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_below="@id/customer_phone"
                 android:layout_marginTop="16dp"
-                android:text="Show Orders"/>
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"/>
+                android:text="Delete"/>
 
 
 
