@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -30,9 +31,7 @@ public class ShowReservations extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
 
-        //String savedData = preferences.getString("reservations", null)
         String dataString = preferences.getString("reservations",null);
 
 
@@ -41,9 +40,6 @@ public class ShowReservations extends AppCompatActivity {
             reservations = gson.fromJson(dataString, new TypeToken<List<Reservation>>(){}.getType());
         }
         else {
-
-            //dummy data for test
-            //Restaurant restaurant = new Restaurant();
             reservations = new ArrayList<>();
             Dish dish = new Dish();
             dish.setAvailability(10);
@@ -119,26 +115,7 @@ public class ShowReservations extends AppCompatActivity {
 
         }
 
-        //reservations = new Gson().fromJson(jsonArray, new TypeToken<List<Reservation>>(){}.getType());
-        Gson gson2 = new Gson();
-        JsonElement element = gson2.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-        JsonArray jsonArray = element.getAsJsonArray();
-        editor.putString("reservations", jsonArray.toString());
-        editor.commit();
-
-
-
-
-        //get updated data from other activities
-        //Reservation res = new Reservation();
-        /*
-        Bundle b = getIntent().getExtras();
-        //int index=0;
-        if (b != null) {
-            Gson gson = new Gson();
-            String data = b.getString("reservations");
-            reservations = gson.fromJson(data, new TypeToken<List<Reservation>>(){}.getType());
-        }*/
+        //reservations.get(0).orderedDishes.get(0).setAvailability(9);
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.reservations);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -146,5 +123,17 @@ public class ShowReservations extends AppCompatActivity {
         ShResAdapter adapter = new ShResAdapter(reservations);
         rv.setAdapter(adapter);
 
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson2 = new Gson();
+        JsonElement element = gson2.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
+        JsonArray jsonArray = element.getAsJsonArray();
+        editor.putString("reservations", jsonArray.toString());
+        editor.commit();
     }
 }

@@ -26,7 +26,6 @@ public class ReservationDetails extends AppCompatActivity {
 
     ArrayList<Reservation> reservations;
     int index;
-    Gson gson = new Gson();
     //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
@@ -38,23 +37,26 @@ public class ReservationDetails extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
+        //get index of current element from bundle
         Bundle b = getIntent().getExtras();
-        //reservations = b.getParcelableArrayList("reservations");
-        String dataString = preferences.getString("reservations",null);
-        reservations = gson.fromJson(dataString, new TypeToken<List<Reservation>>(){}.getType());
         index = b.getInt("index");
+
+        //get data from shared preferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String dataString = preferences.getString("reservations",null);
+        Gson gson = new Gson();
+        reservations = gson.fromJson(dataString, new TypeToken<List<Reservation>>(){}.getType());
+
+        //set card view adapter
         RecyclerView rv = (RecyclerView) findViewById(R.id.reservation_details);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         final ResDetAdapter adapter = new ResDetAdapter(reservations.get(index).orderedDishes);
         rv.setAdapter(adapter);
 
-
-
-        
+        //buttons
         Button reservationConfirm = (Button) findViewById(R.id.reservation_confirm);
         Button reservationRejected = (Button) findViewById(R.id.reservation_reject);
 
@@ -77,13 +79,6 @@ public class ReservationDetails extends AppCompatActivity {
                             //set reservation as confirmed
                             reservations.get(index).setStatus(Reservation.CONFIRMED);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
-                            //in.putExtra("index",index);
                             v.getContext().startActivity(in);
                         }
                     });
@@ -92,12 +87,7 @@ public class ReservationDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             reservations.get(index).setStatus(Reservation.REJECTED);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
+                            //saveData();
                             v.getContext().startActivity(in);
                         }
                     });
@@ -113,12 +103,6 @@ public class ReservationDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             reservations.get(index).setStatus(Reservation.COMPLETED);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
                             v.getContext().startActivity(in);
                         }
                     });
@@ -132,12 +116,6 @@ public class ReservationDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             reservations.remove(index);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
                             v.getContext().startActivity(in);
                         }
                     });
@@ -156,12 +134,6 @@ public class ReservationDetails extends AppCompatActivity {
                             //set reservation as confirmed
                             reservations.get(index).setStatus(Reservation.CONFIRMED);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
                             v.getContext().startActivity(in);
                         }
                     });
@@ -171,17 +143,23 @@ public class ReservationDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             reservations.remove(index);
                             Intent in = new Intent(v.getContext(), ShowReservations.class);
-                            JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                            JsonArray jsonArray = element.getAsJsonArray();
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("reservations", jsonArray.toString());
-                            editor.commit();
                             v.getContext().startActivity(in);
                         }
                     });
                     break;
             }
         }
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Gson gson = new Gson();
+        JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
+        JsonArray jsonArray = element.getAsJsonArray();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("reservations", jsonArray.toString());
+        editor.commit();
     }
 }

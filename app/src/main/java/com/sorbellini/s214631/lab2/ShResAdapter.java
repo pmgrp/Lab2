@@ -89,13 +89,11 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         reservationViewHolder.reservationTotPrice.setText
                 (String.format(Locale.getDefault(),"%.2f",totPrice));
         int color;
-        //reservationViewHolder.deleteButton.sty
+
         switch(reservations.get(i).getStatus()){
             case Reservation.ARRIVED:
                 reservationViewHolder.reservationStatus.setText("Arrived");
                 reservationViewHolder.deleteButton.setVisibility(View.INVISIBLE);
-                //color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_arrived);
-                //reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             case Reservation.CONFIRMED:
                 reservationViewHolder.reservationStatus.setText("Confirmed");
@@ -128,7 +126,6 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             @Override
             public void onClick(View v){
                 Intent in = new Intent(v.getContext(), ReservationDetails.class);
-                //in.putParcelableArrayListExtra("reservations", (ArrayList)reservations);
                 in.putExtra("index", reservationViewHolder.getAdapterPosition());
                 v.getContext().startActivity(in);
             }
@@ -137,13 +134,6 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             @Override
             public void onClick(View v) {
                 reservations.remove(reservationViewHolder.getAdapterPosition());
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-                SharedPreferences.Editor editor = preferences.edit();
-                Gson gson = new Gson();
-                JsonElement element = gson.toJsonTree(reservations, new TypeToken<List<Reservation>>(){}.getType());
-                JsonArray jsonArray = element.getAsJsonArray();
-                editor.putString("reservations", jsonArray.toString());
-                editor.commit();
                 notifyItemRemoved(reservationViewHolder.getAdapterPosition());
             }
         });
