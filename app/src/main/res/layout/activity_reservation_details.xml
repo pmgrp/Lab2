@@ -31,6 +31,7 @@
                 android:layout_marginBottom="4dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
+                android:textColor="@color/button_text_color"
                 android:text="Confirm"/>
             <Button
                 android:id="@+id/reservation_reject"
@@ -40,6 +41,7 @@
                 android:layout_marginBottom="4dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
+                android:textColor="@color/button_text_color"
                 android:text="Reject"/>
         </RelativeLayout>
 

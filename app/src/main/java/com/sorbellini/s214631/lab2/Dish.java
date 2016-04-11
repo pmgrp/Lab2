@@ -14,6 +14,7 @@ import java.net.URI;
 public class Dish implements Parcelable{
     private double price;
     private String photo;
+    private String name;
     private String description;
     private int availability;
 
@@ -21,6 +22,7 @@ public class Dish implements Parcelable{
     public Dish(){
         this.price = 0;
         this.photo = null;
+        this.name = null;
         this.description = null;
         this.availability = 0;
     }
@@ -28,12 +30,14 @@ public class Dish implements Parcelable{
     //getter
     public double getPrice() { return this.price; }
     public String getPhoto() { return this.photo; }
+    public String getName() { return this.name; }
     public String getDescription() { return this.description; }
     public int getAvailability() { return this.availability; }
 
     //setter
     public void setPrice(double price) { this.price =price; }
     public void setPhoto(String photo) { this.photo = photo; }
+    public void setName(String title) { this.name = title; }
     public void setDescription(String description) { this.description = description; }
     public void setAvailability(int availability) { this.availability = availability; }
 
@@ -47,6 +51,7 @@ public class Dish implements Parcelable{
     public void writeToParcel(Parcel dest, int flags){
         dest.writeDouble(this.price);
         dest.writeString(this.photo);
+        dest.writeString(this.name);
         dest.writeString(this.description);
         dest.writeInt(this.availability);
     }
@@ -66,6 +71,7 @@ public class Dish implements Parcelable{
     public Dish(Parcel in){
         this.price = in.readDouble();
         this.photo = in.readString();
+        this.name = in.readString();
         this.description = in.readString();
         this.availability = in.readInt();
     }

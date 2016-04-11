@@ -27,7 +27,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="4dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:textColor="@color/dark_text_color"
                 android:text="Customer Details"/>
 
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:textColor="@color/dark_text_color"
                 android:text="Status"/>
             <TextView
                 android:id="@+id/reservation_status"
@@ -73,15 +73,23 @@
                 android:textSize="16sp"
                 android:text="Phone"/>
             <TextView
-            android:id="@+id/lunch_time_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customer_phone"
-            android:paddingTop="8dp"
-            android:layout_alignParentLeft="true"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Lunch Time"/>
+                android:id="@+id/customer_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/customer_phone"
+                android:paddingTop="4dp"
+                android:textSize="16sp"
+                android:text="This is the customer comment"/>
+            <TextView
+                android:id="@+id/lunch_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/customer_comment"
+                android:paddingTop="8dp"
+                android:layout_alignParentLeft="true"
+                android:textSize="20sp"
+                android:textColor="@color/dark_text_color"
+                android:text="Lunch Time"/>
             <TextView
                 android:id="@+id/lunch_time"
                 android:layout_width="wrap_content"
@@ -94,11 +102,11 @@
                 android:id="@+id/reservation_tot_price_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/customer_phone"
+                android:layout_below="@id/customer_comment"
                 android:paddingTop="8dp"
                 android:layout_alignParentRight="true"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:textColor="@color/dark_text_color"
                 android:text="Total Price"/>
             <TextView
                 android:id="@+id/reservation_tot_price"
@@ -114,8 +122,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/customer_phone"
+                android:layout_below="@id/customer_comment"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/button_text_color"
                 android:text="Delete"/>
 
 

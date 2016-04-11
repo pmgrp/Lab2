@@ -29,6 +29,7 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
     public static class DishViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         ImageView dishImage;
+        TextView dishName;
         TextView dishDescription;
         TextView dishPrice;
         TextView dishAvailability;
@@ -37,6 +38,7 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.reservation_dish_card);
             dishImage = (ImageView)itemView.findViewById(R.id.dish_image);
+            dishName = (TextView)itemView.findViewById(R.id.dish_name);
             dishDescription = (TextView)itemView.findViewById(R.id.dish_description);
             dishPrice = (TextView)itemView.findViewById(R.id.dish_price);
             dishAvailability = (TextView)itemView.findViewById(R.id.dish_availability);
@@ -58,6 +60,7 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
     @Override
     public void onBindViewHolder(final DishViewHolder dishViewHolder, int i) {
         dishViewHolder.dishImage.setImageURI(Uri.parse(orderedDishes.get(i).getPhoto()));
+        dishViewHolder.dishName.setText(orderedDishes.get(i).getName());
         dishViewHolder.dishDescription.setText(orderedDishes.get(i).getDescription());
         dishViewHolder.dishPrice.setText(String.format(Locale.getDefault(),"%.2f", orderedDishes.get(i).getPrice()) + "€");
         dishViewHolder.dishAvailability.setText(String.format(Locale.getDefault(),"%d", orderedDishes.get(i).getAvailability()));

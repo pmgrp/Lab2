@@ -47,6 +47,7 @@ public class ShowReservations extends AppCompatActivity {
             reservations = new ArrayList<>();
             Dish dish = new Dish();
             dish.setAvailability(10);
+            dish.setName("Pizza");
             dish.setDescription("A great pizza to eat");
             String imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
                     getResources().getResourcePackageName(R.drawable.pizza) + '/' +
@@ -69,7 +70,8 @@ public class ShowReservations extends AppCompatActivity {
 
             Dish dish2 = new Dish();
             dish2.setAvailability(5);
-            dish2.setDescription("Nice Pasta");
+            dish2.setName("Pasta");
+            dish2.setDescription("A really good vegan Pasta");
             imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
                     getResources().getResourcePackageName(R.drawable.pasta) + '/' +
                     getResources().getResourceTypeName(R.drawable.pasta) + '/' +
@@ -79,7 +81,7 @@ public class ShowReservations extends AppCompatActivity {
 
             Customer cus2 = new Customer();
             cus2.setName("Marco");
-            cus2.setSurname("Bianchi");
+            cus2.setSurname("Rossi");
             cus2.setPhone("3337645678");
 
             Reservation res2 = new Reservation();
@@ -89,6 +91,31 @@ public class ShowReservations extends AppCompatActivity {
             res2.orderedDishes.add(dish2);
             res2.orderedDishes.add(dish);
             reservations.add(res2);
+
+            Dish dish3 = new Dish();
+            dish3.setAvailability(7);
+            dish3.setName("Chicken");
+            dish3.setDescription("The greatest chicken you have ever eaten");
+            imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                    getResources().getResourcePackageName(R.drawable.pollo) + '/' +
+                    getResources().getResourceTypeName(R.drawable.pollo) + '/' +
+                    getResources().getResourceEntryName(R.drawable.pollo);
+            dish3.setPhoto(imagePath);
+            dish3.setPrice(8.70);
+
+            Customer cus3 = new Customer();
+            cus3.setName("Giovanni");
+            cus3.setSurname("Verdi");
+            cus3.setPhone("3287567678");
+
+            Reservation res3 = new Reservation();
+            res3.setCustomer(cus2);
+            res3.setTime("14.30");
+            res3.setComment("");
+            res3.orderedDishes.add(dish3);
+            res3.orderedDishes.add(dish2);
+            res3.orderedDishes.add(dish);
+            reservations.add(res3);
 
         }
 

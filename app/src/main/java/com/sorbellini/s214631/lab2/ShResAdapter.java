@@ -40,6 +40,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         TextView customerName;
         TextView customerSurname;
         TextView customerPhone;
+        TextView customerComment;
         TextView lunchTime;
         TextView lunchTimeTitle;
         TextView reservationStatus;
@@ -52,6 +53,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
             customerName = (TextView)itemView.findViewById(R.id.customer_name);
             customerSurname = (TextView)itemView.findViewById(R.id.customer_surname);
             customerPhone = (TextView)itemView.findViewById(R.id.customer_phone);
+            customerComment = (TextView)itemView.findViewById(R.id.customer_comment);
             lunchTime = (TextView)itemView.findViewById(R.id.lunch_time);
             lunchTimeTitle = (TextView)itemView.findViewById(R.id.lunch_time_title);
             reservationStatus = (TextView)itemView.findViewById(R.id.reservation_status);
@@ -81,17 +83,19 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         }
         reservationViewHolder.customerName.setText(reservations.get(i).getCustomer().getName());
         reservationViewHolder.customerSurname.setText(reservations.get(i).getCustomer().getSurname());
-        reservationViewHolder.customerPhone.setText(reservations.get(i).getCustomer().getPhone());
+        reservationViewHolder.customerPhone.setText("Tel: " + reservations.get(i).getCustomer().getPhone());
+        reservationViewHolder.customerComment.setText(reservations.get(i).getComment());
         reservationViewHolder.lunchTime.setText(reservations.get(i).getTime());
         reservationViewHolder.reservationTotPrice.setText
                 (String.format(Locale.getDefault(),"%.2f",totPrice));
         int color;
+        //reservationViewHolder.deleteButton.sty
         switch(reservations.get(i).getStatus()){
             case Reservation.ARRIVED:
                 reservationViewHolder.reservationStatus.setText("Arrived");
                 reservationViewHolder.deleteButton.setVisibility(View.INVISIBLE);
-                color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_arrived);
-                reservationViewHolder.cv.setCardBackgroundColor(color);
+                //color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_arrived);
+                //reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             case Reservation.CONFIRMED:
                 reservationViewHolder.reservationStatus.setText("Confirmed");
