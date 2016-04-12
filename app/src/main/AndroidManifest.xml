@@ -36,5 +36,4 @@
                 android:value="com.sorbellini.s214631.lab2.ShowReservations" />
         </activity>
     </application>
-
 </manifest>
