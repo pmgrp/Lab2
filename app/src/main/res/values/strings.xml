@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Lab2</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
     <string name="action_edit_string">Edit</string>
     <string name="offer_name">Offer name</string>
     <string name="hint_offer_name">Write the name of your offer</string>
@@ -16,8 +15,6 @@
     <string name="description_daily_offer">This offer is the offer of the day</string>
     <string name="price_number">5€</string>
     <string name="available_quantity_number">100</string>
-=======
     <string name="title_activity_show_reservations">Reservations</string>
     <string name="title_activity_show_reservation_detail">Ordered Dishes</string>
->>>>>>> eugenio-reservations
 </resources>

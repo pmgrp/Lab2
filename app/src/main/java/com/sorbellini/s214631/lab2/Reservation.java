@@ -20,11 +20,7 @@ public class Reservation implements Parcelable {
     public ArrayList<Dish> orderedDishes;
     private String time;
     private String comment;
-<<<<<<< HEAD
-
-=======
     private int status;
->>>>>>> eugenio-reservations
 
     public Reservation(){
         this.customer = null;
