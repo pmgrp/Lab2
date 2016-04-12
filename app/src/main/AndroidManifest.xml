@@ -22,7 +22,6 @@
         <activity android:name=".FormularAddingAnOffer" />
         <activity android:name=".DailyOffer" />
         <activity android:name=".ModifyOffer"></activity>
-=======
         <activity
             android:name=".ShowReservations"
             android:label="@string/title_activity_show_reservations"
@@ -40,7 +39,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.ShowReservations" />
         </activity>
->>>>>>> eugenio-reservations
     </application>
 
 </manifest>

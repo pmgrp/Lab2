@@ -27,9 +27,11 @@ public class ShowReservations extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reservations);
+        //to add toolbar with back arrow
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         String dataString = preferences.getString("reservations",null);
