@@ -18,10 +18,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".ShowOffer" />
         <activity android:name=".FormularAddingAnOffer" />
         <activity android:name=".DailyOffer" />
         <activity android:name=".ModifyOffer"></activity>
+=======
+        <activity
+            android:name=".ShowReservations"
+            android:label="@string/title_activity_show_reservations"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sorbellini.s214631.lab2.MainActivity" />
+        </activity>
+        <activity android:name=".ReservationDetails"
+            android:label="@string/title_activity_show_reservation_detail"
+            android:parentActivityName=".ShowReservations"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sorbellini.s214631.lab2.ShowReservations" />
+        </activity>
+>>>>>>> eugenio-reservations
     </application>
 
 </manifest>

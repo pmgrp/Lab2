@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Day monday = new Day(1);
 
         dailyoffer = (ImageView)findViewById(R.id.daily_offer);
         dailyoffer.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +52,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showReservations(View view) {
+
+        Intent show_reservations = new Intent(this, ShowReservations.class);
+        startActivity(show_reservations);
     }
 }
