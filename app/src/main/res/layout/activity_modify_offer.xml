@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.sorbellini.s214631.lab2.ModifyOffer">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/ic_menu_camera"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:id="@+id/camera_modify" />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/capturephoto_modify"
+        android:background="@mipmap/daily_offer"/>
+    <TextView
+        android:id="@+id/offer_title_modify"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/offer_name"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+    <EditText
+        android:id="@+id/editOffer_Name_modify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/daily_offer_name"/>
+    <TextView
+        android:id="@+id/description_title_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/description"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+    <EditText
+        android:id="@+id/editOffer_Description_modify"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:layout_height="wrap_content"
+        android:hint="@string/description_daily_offer"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="20dp"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout2_modify">
+            <TextView
+                android:id="@+id/editOffer_Price_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/price_title"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+            <NumberPicker
+                android:layout_width="50dp"
+                android:layout_height="73dp"
+                android:layout_gravity="center"
+                android:id="@+id/picker_Price_modify"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout_modify">
+            <TextView
+                android:id="@+id/editOffer_AvailableQuantity_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/available_quantity_title"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
+            <NumberPicker
+                android:layout_width="50dp"
+                android:layout_height="79dp"
+                android:layout_gravity="center"
+                android:id="@+id/picker_AvailableQuantity_modify"/>
+
+        </LinearLayout>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="@string/save"
+            android:id="@+id/offerSave_modify"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="75dp"
+            android:layout_marginEnd="75dp"
+            android:onClick="saveData2" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="@string/cancel"
+            android:id="@+id/return_menu_modify"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/linearLayout2_modify"
+            android:onClick="backToViewOffer" />
+
+    </RelativeLayout>
+
+</LinearLayout>

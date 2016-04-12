@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ShowOffer" />
+        <activity android:name=".FormularAddingAnOffer" />
+        <activity android:name=".DailyOffer" />
+        <activity android:name=".ModifyOffer"></activity>
     </application>
 
 </manifest>
