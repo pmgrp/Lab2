@@ -52,6 +52,33 @@ public class ShowOffer extends AppCompatActivity {
             }
         });
 
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                if (position != 0) {
+                    onClickPopupOptions();
+                }
+                return true;
+            }
+        });
+
+    }
+
+    public void onClickPopupOptions() {
+        final CharSequence[] items = { "Delete", "Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(ShowOffer.this);
+        builder.setTitle("Options");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (items[item].equals("Delete")) {
+
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
     }
 
     public void onClickPopupOffer() {
