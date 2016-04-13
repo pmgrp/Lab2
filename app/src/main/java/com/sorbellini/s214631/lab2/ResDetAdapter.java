@@ -72,4 +72,6 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+
+
 }
