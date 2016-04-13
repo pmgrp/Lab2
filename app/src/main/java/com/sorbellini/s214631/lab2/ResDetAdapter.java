@@ -62,7 +62,8 @@ public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHo
         dishViewHolder.dishImage.setImageURI(Uri.parse(orderedDishes.get(i).getPhoto()));
         dishViewHolder.dishName.setText(orderedDishes.get(i).getName());
         dishViewHolder.dishDescription.setText(orderedDishes.get(i).getDescription());
-        dishViewHolder.dishPrice.setText(String.format(Locale.getDefault(),"%.2f", orderedDishes.get(i).getPrice()) + "€");
+        dishViewHolder.dishPrice.setText
+                (String.format(Locale.getDefault(),"%.2f", orderedDishes.get(i).getPrice()));
         dishViewHolder.dishAvailability.setText(String.format(Locale.getDefault(),"%d", orderedDishes.get(i).getAvailability()));
     }
 

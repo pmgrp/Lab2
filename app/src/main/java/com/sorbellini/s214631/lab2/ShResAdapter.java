@@ -83,7 +83,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         }
         reservationViewHolder.customerName.setText(reservations.get(i).getCustomer().getName());
         reservationViewHolder.customerSurname.setText(reservations.get(i).getCustomer().getSurname());
-        reservationViewHolder.customerPhone.setText("Tel: " + reservations.get(i).getCustomer().getPhone());
+        reservationViewHolder.customerPhone.setText(reservations.get(i).getCustomer().getPhone());
         reservationViewHolder.customerComment.setText(reservations.get(i).getComment());
         reservationViewHolder.lunchTime.setText(reservations.get(i).getTime());
         reservationViewHolder.reservationTotPrice.setText
@@ -92,31 +92,31 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
 
         switch(reservations.get(i).getStatus()){
             case Reservation.ARRIVED:
-                reservationViewHolder.reservationStatus.setText("Arrived");
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_arrived);
                 reservationViewHolder.deleteButton.setVisibility(View.INVISIBLE);
                 break;
             case Reservation.CONFIRMED:
-                reservationViewHolder.reservationStatus.setText("Confirmed");
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_confirmed);
                 reservationViewHolder.deleteButton.setVisibility(View.INVISIBLE);
                 color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_confirmed);
                 reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             case Reservation.REJECTED:
-                reservationViewHolder.reservationStatus.setText("Rejected");
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_rejected);
                 reservationViewHolder.lunchTime.setVisibility(View.INVISIBLE);
                 reservationViewHolder.lunchTimeTitle.setVisibility(View.INVISIBLE);
                 color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_rejected);
                 reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             case Reservation.COMPLETED:
-                reservationViewHolder.reservationStatus.setText("Completed");
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_rejected);
                 reservationViewHolder.lunchTime.setVisibility(View.INVISIBLE);
                 reservationViewHolder.lunchTimeTitle.setVisibility(View.INVISIBLE);
                 color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_completed);
                 reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             default:
-                reservationViewHolder.reservationStatus.setText("Arrived");
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_arrived);
                 reservationViewHolder.deleteButton.setVisibility(View.INVISIBLE);
                 color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_arrived);
                 reservationViewHolder.cv.setCardBackgroundColor(color);
