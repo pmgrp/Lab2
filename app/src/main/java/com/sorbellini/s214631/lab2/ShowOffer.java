@@ -3,16 +3,13 @@ package com.sorbellini.s214631.lab2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class ShowOffer extends AppCompatActivity {
     ImageButton add_offer;
@@ -46,7 +43,7 @@ public class ShowOffer extends AppCompatActivity {
                     onClickPopupOffer();
                 }
                 else {
-                    Intent intent = new Intent(ShowOffer.this, DailyOffer.class);
+                    Intent intent = new Intent(ShowOffer.this, ActivityDailyOffer.class);
                     startActivity(intent);
                 }
             }

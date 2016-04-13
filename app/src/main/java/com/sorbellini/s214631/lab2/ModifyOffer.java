@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -103,7 +102,7 @@ public class ModifyOffer extends AppCompatActivity {
 
 
     public void backToViewOffer(View view) {
-        Intent intent = new Intent(ModifyOffer.this, DailyOffer.class);
+        Intent intent = new Intent(ModifyOffer.this, ActivityDailyOffer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
@@ -130,7 +129,7 @@ public class ModifyOffer extends AppCompatActivity {
         //editor.putString("price", offerPrice);
         editor.commit();
 
-        Intent intent = new Intent(this, DailyOffer.class);
+        Intent intent = new Intent(this, ActivityDailyOffer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

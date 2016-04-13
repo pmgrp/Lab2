@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".ShowOffer" />
         <activity android:name=".FormularAddingAnOffer" />
-        <activity android:name=".DailyOffer" />
+        <activity android:name=".ActivityDailyOffer" />
         <activity android:name=".ModifyOffer"></activity>
         <activity
             android:name=".ShowReservations"
