@@ -3,9 +3,12 @@ package com.sorbellini.s214631.lab2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
+=======
+>>>>>>> master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +16,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+<<<<<<< HEAD
 import android.widget.ImageView;
 import android.widget.TextView;
+=======
+>>>>>>> master
 
 public class ShowOffer extends AppCompatActivity {
     ImageButton add_offer;
@@ -53,6 +59,7 @@ public class ShowOffer extends AppCompatActivity {
                 }
             }
         });
+<<<<<<< HEAD
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_name = preferences.getString("offerName", null);
         String saved_description = preferences.getString("offerDescription", null);
@@ -70,6 +77,36 @@ public class ShowOffer extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.editOffer_Description);
         if(textView!=null)
             textView.setText(saved_description);
+=======
+
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                if (position != 0) {
+                    onClickPopupOptions();
+                }
+                return true;
+            }
+        });
+
+    }
+
+    public void onClickPopupOptions() {
+        final CharSequence[] items = { "Delete", "Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(ShowOffer.this);
+        builder.setTitle("Options");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (items[item].equals("Delete")) {
+
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+>>>>>>> master
     }
 
 
