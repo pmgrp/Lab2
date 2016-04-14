@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DailyOffer extends AppCompatActivity {
+public class ActivityDailyOffer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,16 +23,16 @@ public class DailyOffer extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_offerName = preferences.getString("offerNameModify", null);
         String saved_offerDescription = preferences.getString("offerDescriptionModify", null);
-        //int saved_offerPrice = preferences.getInt("offerPriceModify", -1);
-        //int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantityModify", -1);
-        /*String saved_imgPath = preferences.getString("imgPathModify", null);
+        int saved_offerPrice = preferences.getInt("PriceModify", -1);
+        int saved_offerAvailableQuantity = preferences.getInt("AvailableQuantityModify", -1);
+        String saved_imgPath = preferences.getString("imgPathModify", null);
 
         if (saved_imgPath != null){
             ImageView imageView = (ImageView) findViewById(R.id.daily_offer_capturephoto);
             Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
             if(imageView!=null)
                 imageView.setImageBitmap(imageBitmap);
-        }*/
+        }
 
         TextView textView;
         textView = (TextView) findViewById(R.id.daily_offer_name);
@@ -44,6 +44,18 @@ public class DailyOffer extends AppCompatActivity {
         if(textView!=null) {
             textView.setText(saved_offerDescription);
         }
+
+        textView= (TextView) findViewById(R.id.daily_offer_price_number);
+        if(textView!=null) {
+            textView.setText(String.valueOf(saved_offerPrice));
+        }
+
+        textView= (TextView) findViewById(R.id.daily_available_quantity_number);
+        if(textView!=null) {
+            textView.setText(String.valueOf(saved_offerAvailableQuantity));
+        }
+
+
 
     }
 
