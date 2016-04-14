@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity
             android:name=".ShowOffer"
             android:label="@string/title_activity_show_offer"
@@ -27,15 +26,6 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.sorbellini.s214631.lab2.MainActivity" />
-        </activity>
-=======
-
-        <activity android:name=".ShowOffer"
-            android:label="@string/title_activity_show_offer"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
 
         <activity android:name=".FormularAddingAnOffer"
@@ -62,14 +52,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityDailyOffer" />
         </activity>
-
-=======
-        <activity android:name=".ShowOffer" />
->>>>>>> master
-        <activity android:name=".FormularAddingAnOffer" />
-        <activity android:name=".ActivityDailyOffer" />
-        <activity android:name=".ModifyOffer"></activity>
->>>>>>> master
         <activity
             android:name=".ShowReservations"
             android:label="@string/title_activity_show_reservations"
@@ -87,10 +69,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.ShowReservations" />
         </activity>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     </application>
 
 </manifest>
