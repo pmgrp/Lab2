@@ -3,6 +3,12 @@ package com.sorbellini.s214631.lab2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
+=======
+>>>>>>> master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +16,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+<<<<<<< HEAD
+import android.widget.ImageView;
+import android.widget.TextView;
+=======
+>>>>>>> master
 
 public class ShowOffer extends AppCompatActivity {
     ImageButton add_offer;
@@ -48,6 +59,25 @@ public class ShowOffer extends AppCompatActivity {
                 }
             }
         });
+<<<<<<< HEAD
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String saved_name = preferences.getString("offerName", null);
+        String saved_description = preferences.getString("offerDescription", null);
+        String saved_imgPath = preferences.getString("imgPath", null);
+        if (saved_imgPath != null){
+            ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
+            Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
+            if(imageView!=null)
+                imageView.setImageBitmap(imageBitmap);
+        }
+        TextView textView;
+        textView = (TextView) findViewById(R.id.editOffer_Name);
+        if(textView!=null)
+            textView.setText(saved_name);
+        textView = (TextView) findViewById(R.id.editOffer_Description);
+        if(textView!=null)
+            textView.setText(saved_description);
+=======
 
         gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View v,
@@ -76,7 +106,10 @@ public class ShowOffer extends AppCompatActivity {
             }
         });
         builder.show();
+>>>>>>> master
     }
+
+
 
     public void onClickPopupOffer() {
         final CharSequence[] items = { "Yes", "No" };
@@ -86,6 +119,7 @@ public class ShowOffer extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (items[item].equals("Yes")) {
+
                     startActivity(new Intent(ShowOffer.this, FormularAddingAnOffer.class));
                 } else if (items[item].equals("No")) {
                     dialog.dismiss();

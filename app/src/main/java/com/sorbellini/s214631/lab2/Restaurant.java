@@ -18,7 +18,7 @@ public class Restaurant {
     private Bitmap restaurantPhoto;
     private OpeningHours openingHours;
     public ArrayList<Reservation> reservations;
-    //public ArrayList<DailyOffer> dailyOffers;
+    //public ArrayList<ActivityDailyOffer> dailyOffers;
 
     public Restaurant(){
         this.restaurantName = null;

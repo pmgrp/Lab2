@@ -17,4 +17,8 @@
     <string name="available_quantity_number">100</string>
     <string name="title_activity_show_reservations">Reservations</string>
     <string name="title_activity_show_reservation_detail">Ordered Dishes</string>
+    <string name="title_activity_show_offer">Offers</string>
+    <string name="title_activity_daily_offer">Daily Offer</string>
+    <string name="title_activity_formular_adding_an_offer">Add an Offer</string>
+    <string name="title_activity_modify_offer">Modify my Offer</string>
 </resources>

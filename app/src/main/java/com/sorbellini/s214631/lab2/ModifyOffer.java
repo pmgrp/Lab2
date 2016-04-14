@@ -46,10 +46,12 @@ public class ModifyOffer extends AppCompatActivity {
         pickerPrice.setMaxValue(1000);
         pickerPrice.setMinValue(0);
         pickerPrice.setWrapSelectorWheel(false);
+        pickerPrice.setValue(10);
 
         pickerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_AvailableQuantity_modify);
         pickerAvailableQuantity.setMaxValue(1000);
         pickerAvailableQuantity.setMinValue(0);
+        pickerAvailableQuantity.setValue(10);
         pickerAvailableQuantity.setWrapSelectorWheel(false);
 
         buttoncamera = (ImageButton) findViewById(R.id.camera_modify);
@@ -65,16 +67,16 @@ public class ModifyOffer extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_offerName = preferences.getString("offerNameModify", null);
         String saved_offerDescription = preferences.getString("offerDescriptionModify", null);
-        //int saved_offerPrice = preferences.getInt("offerPriceModify", -1);
-        //int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantityModify", -1);
-        /*String saved_imgPath = preferences.getString("imgPathModify", null);
+        int saved_offerPrice = preferences.getInt("offerPriceModify", -1);
+        int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantityModify", -1);
+        String saved_imgPath = preferences.getString("imgPathModify", null);
 
         if (saved_imgPath != null){
             ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
             Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
             if(imageView!=null)
                 imageView.setImageBitmap(imageBitmap);
-        }*/
+        }
         TextView textView;
         textView = (TextView) findViewById(R.id.editOffer_Name_modify);
         if(textView!=null) {
@@ -84,6 +86,14 @@ public class ModifyOffer extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.editOffer_Description_modify);
         if(textView!=null) {
             textView.setText(saved_offerDescription);
+        }
+        NumberPicker numPicker = (NumberPicker)findViewById(R.id.picker_Price_modify);
+        if(numPicker!=null){
+            textView.setText(String.valueOf(saved_offerPrice));
+        }
+        NumberPicker numPicker1 = (NumberPicker)findViewById(R.id.picker_AvailableQuantity_modify);
+        if(numPicker1!=null){
+            textView.setText(String.valueOf(saved_offerAvailableQuantity));
         }
 
         /*
@@ -115,18 +125,20 @@ public class ModifyOffer extends AppCompatActivity {
         String offerName = editText.getText().toString();
         editText = (EditText) findViewById(R.id.editOffer_Description_modify);
         String offerDescription = editText.getText().toString();
-        //int offerAvailableQuantity = (int) findViewById(R.id.picker_AvailableQuantity);
-        //int offerPrice = (int) findViewById(R.id.picker_price);
-        /*ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
+        NumberPicker offerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_AvailableQuantity_modify);
+        NumberPicker offerPrice = (NumberPicker) findViewById(R.id.picker_Price_modify);
+        int valuePrice=offerPrice.getValue();
+        int valueAvailableQuantity=offerAvailableQuantity.getValue();
+        ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        imagePath = imagePicker.saveToInternalStorage(bitmap,this);*/
+        imagePath = imagePicker.saveToInternalStorage(bitmap,this);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        //editor.putString("imgPathModify", imagePath);
+        editor.putString("imgPathModify", imagePath);
         editor.putString("offerNameModify", offerName);
         editor.putString("offerDescriptionModify", offerDescription);
-        //editor.putString("availableQuantity", offerAvailableQuantity);
-        //editor.putString("price", offerPrice);
+        editor.putInt("AvailableQuantityModify", valueAvailableQuantity);
+        editor.putInt("PriceModify", valuePrice);
         editor.commit();
 
         Intent intent = new Intent(this, ActivityDailyOffer.class);

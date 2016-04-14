@@ -33,19 +33,21 @@ public class FormularAddingAnOffer extends AppCompatActivity {
 
     private static final int PICK_IMAGE_ID = 234;
     private Button return_menu;
-    private String imagePath = null;
     private ImageView imagecapturephoto;
     private ImageButton buttoncamera;
     static final int CAM_REQUEST = 1;
     private static final int SELECTED_PICTURE = 1;
     private NumberPicker pickerPrice = null;
     private NumberPicker pickerAvailableQuantity = null;
+    private String imagePath = null;
+    private Uri tempImageUri = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formular_adding_an_offer);
-
+        imagecapturephoto = (ImageView) findViewById(R.id.capturephoto);
         pickerPrice = (NumberPicker) findViewById(R.id.picker_Price);
         pickerPrice.setMaxValue(1000);
         pickerPrice.setMinValue(0);
@@ -57,7 +59,9 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         pickerAvailableQuantity.setWrapSelectorWheel(false);
 
         buttoncamera = (ImageButton) findViewById(R.id.camera);
-        imagecapturephoto = (ImageView) findViewById(R.id.capturephoto);
+
+
+
 
 
         buttoncamera.setOnClickListener(new View.OnClickListener() {
@@ -70,16 +74,27 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_offerName = preferences.getString("offerName", null);
         String saved_offerDescription = preferences.getString("offerDescription", null);
-        //int saved_offerPrice = preferences.getInt("offerPrice", -1);
-        //int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantity", -1);
-        /*String saved_imgPath = preferences.getString("imgPath", null);
+        imagePath = preferences.getString("imgPath", null);
+        Bitmap bitmap = imagePicker.loadImageFromStorage(imagePath);
+       /* imagecapturephoto.setImageBitmap(bitmap);
+        if (savedInstanceState != null) {
+            tempImageUri = savedInstanceState.getParcelable("TempUri");
+        }
+        if (tempImageUri != null) {
+            bitmap = imagePicker.getImageResized(this, tempImageUri);
+            if (imagecapturephoto != null)
+                imagecapturephoto.setImageBitmap(bitmap);
+        }*/
+        int saved_offerPrice = preferences.getInt("offerPrice", -1);
+        int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantity", -1);
+        String saved_imgPath = preferences.getString("imgPath", null);
 
         if (saved_imgPath != null){
             ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
             Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
             if(imageView!=null)
                 imageView.setImageBitmap(imageBitmap);
-        }*/
+        }
         TextView textView;
         textView = (TextView) findViewById(R.id.editOffer_Name);
         if(textView!=null) {
@@ -89,6 +104,14 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.editOffer_Description);
         if(textView!=null) {
             textView.setText(saved_offerDescription);
+        }
+        NumberPicker numPicker = (NumberPicker)findViewById(R.id.picker_Price);
+        if(numPicker!=null){
+
+        }
+        NumberPicker numPicker1 = (NumberPicker)findViewById(R.id.picker_AvailableQuantity);
+        if(numPicker1!=null){
+
         }
 
         /*
@@ -187,6 +210,12 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         return image_file;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle onSave) {
+        super.onSaveInstanceState(onSave);
+        onSave.putParcelable("TempUri", tempImageUri);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -248,12 +277,12 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         String offerDescription = editText.getText().toString();
         //int offerAvailableQuantity = (int) findViewById(R.id.picker_AvailableQuantity);
         //int offerPrice = (int) findViewById(R.id.picker_price);
-        /*ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
+        ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        imagePath = imagePicker.saveToInternalStorage(bitmap,this);*/
+        imagePath = imagePicker.saveToInternalStorage(bitmap,this);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        //editor.putString("imgPath", imagePath);
+        editor.putString("imgPath", imagePath);
         editor.putString("offerName", offerName);
         editor.putString("offerDescription", offerDescription);
         //editor.putString("availableQuantity", offerAvailableQuantity);
@@ -272,5 +301,9 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void selectPhoto(View view) {
+        Intent chooseImageIntent = imagePicker.getPickImageIntent(this);
+        startActivityForResult(chooseImageIntent, PICK_IMAGE_ID);
+    }
 }
 
