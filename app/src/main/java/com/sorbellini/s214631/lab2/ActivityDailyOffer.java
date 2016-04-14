@@ -1,6 +1,5 @@
 package com.sorbellini.s214631.lab2;
 
-<<<<<<< HEAD:app/src/main/java/com/sorbellini/s214631/lab2/ActivityDailyOffer.java
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -24,16 +23,16 @@ public class ActivityDailyOffer extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_offerName = preferences.getString("offerNameModify", null);
         String saved_offerDescription = preferences.getString("offerDescriptionModify", null);
-        int saved_offerPrice = preferences.getInt("PriceModify", -1);
-        int saved_offerAvailableQuantity = preferences.getInt("AvailableQuantityModify", -1);
-        String saved_imgPath = preferences.getString("imgPathModify", null);
+        //int saved_offerPrice = preferences.getInt("offerPriceModify", -1);
+        //int saved_offerAvailableQuantity = preferences.getInt("offerAvailableQuantityModify", -1);
+        /*String saved_imgPath = preferences.getString("imgPathModify", null);
 
         if (saved_imgPath != null){
             ImageView imageView = (ImageView) findViewById(R.id.daily_offer_capturephoto);
             Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
             if(imageView!=null)
                 imageView.setImageBitmap(imageBitmap);
-        }
+        }*/
 
         TextView textView;
         textView = (TextView) findViewById(R.id.daily_offer_name);
@@ -46,70 +45,31 @@ public class ActivityDailyOffer extends AppCompatActivity {
             textView.setText(saved_offerDescription);
         }
 
-        textView= (TextView) findViewById(R.id.daily_offer_price_number);
-        if(textView!=null) {
-            textView.setText(String.valueOf(saved_offerPrice));
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_daily_offer, menu);
+        return true;
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_edit) {
+            Intent intent = new Intent(this, ModifyOffer.class);
+            startActivity(intent);
+            return true;
         }
 
-        textView= (TextView) findViewById(R.id.daily_available_quantity_number);
-        if(textView!=null) {
-            textView.setText(String.valueOf(saved_offerAvailableQuantity));
-        }
-
-
-
-=======
-/**
- * Created by eugeniosorbellini on 13/04/16.
- */
-public class DailyOffer {
-    private String name;
-    private String description;
-    private String photo;
-    private int price;
-    private int availability;
-
-    //default constructor
-    public DailyOffer() {
-        this.name = "";
-        this.description = "";
-        this.photo = "";
-        this.price = -1;
-        this.availability = -1;
->>>>>>> master:app/src/main/java/com/sorbellini/s214631/lab2/DailyOffer.java
+        return super.onOptionsItemSelected(item);
     }
 
-    //getter
-    public String getName(){
-        return this.name;
-    }
-    public String getDescription(){
-        return this.description;
-    }
-    public String getPhoto(){
-        return this.photo;
-    }
-    public int getPrice(){
-        return this.price;
-    }
-    public int getAvailability(){
-        return this.availability;
-    }
 
-    //setter
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public void setPhoto(String photo){
-        this.photo = photo;
-    }
-    public void setPrice(int price){
-        this.price = price;
-    }
-    public void setAvailability(int availability){
-        this.availability = availability;
-    }
 }

@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
 
         <activity android:name=".ShowOffer"
             android:label="@string/title_activity_show_offer"
