@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,7 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ISEN on 11/04/2016.
+ * Author: Mario Velasco Casquero
+ * Date: 08/09/2015
+ * Email: m3ario@gmail.com
  */
 public class imagePicker {
 
@@ -33,7 +34,8 @@ public class imagePicker {
     private static final String TEMP_IMAGE_NAME = "tempImage";
 
     public static int minWidthQuality = DEFAULT_MIN_WIDTH_QUALITY;
-
+    private Bitmap bitmapImage;
+    private Context context;
 
 
     public static Intent getPickImageIntent(Context context) {
@@ -70,6 +72,22 @@ public class imagePicker {
         return list;
     }
 
+    public static Uri getUriFromResult(Context context, int resultCode,
+                                       Intent imageReturnedIntent) {
+        File imageFile = getTempFile(context);
+        Uri selectedImage=null;
+        if (resultCode == Activity.RESULT_OK) {
+            boolean isCamera = (imageReturnedIntent == null ||
+                    imageReturnedIntent.getData() == null ||
+                    imageReturnedIntent.getData().equals(Uri.fromFile(imageFile)));
+            if (isCamera) {     /** CAMERA **/
+                selectedImage = Uri.fromFile(imageFile);
+            } else {            /** ALBUM **/
+                selectedImage = imageReturnedIntent.getData();
+            }
+        }
+        return selectedImage;
+    }
 
     public static Bitmap getImageFromResult(Context context, int resultCode,
                                             Intent imageReturnedIntent) {
@@ -89,18 +107,18 @@ public class imagePicker {
             Log.d(TAG, "selectedImage: " + selectedImage);
 
             bm = getImageResized(context, selectedImage);
-            //int rotation = getRotation(context, selectedImage, isCamera);
-            //bm = rotate(bm, rotation);
+            int rotation = getRotation(context, selectedImage, isCamera);
+            bm = rotate(bm, rotation);
         }
         return bm;
     }
 
 
-    public static Bitmap loadImageFromStorage(String path)
+    public static Bitmap loadImageFromStorage(String path, String filename)
     {
 
         try {
-            File f=new File(path, "profile.jpg");
+            File f=new File(path, filename);
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             return b;
 
@@ -217,11 +235,11 @@ public class imagePicker {
         return bm;
     }
 
-    public static String saveToInternalStorage(Bitmap bitmapImage, Context context) {
+    public static String saveToInternalStorage(Bitmap bitmapImage, Context context, String filename) {
         // path to /data/data/yourapp/app_data/imageDir
         File directory = context.getDir("imageDir", Context.MODE_PRIVATE);
         // Create imageDir
-        File path = new File(directory, "profile.jpg");
+        File path = new File(directory, filename);
 
         FileOutputStream fos = null;
         try{
@@ -239,5 +257,6 @@ public class imagePicker {
         }
         return directory.getAbsolutePath();
     }
+
 
 }

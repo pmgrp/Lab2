@@ -17,18 +17,12 @@
     android:padding="16dp"
     tools:context="com.sorbellini.s214631.lab2.ModifyOffer">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/ic_menu_camera"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:id="@+id/camera_modify" />
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/capturephoto_modify"/>
+        android:id="@+id/capturephoto_modify"
+        android:onClick="selectPhoto"/>
     <TextView
         android:id="@+id/offer_title_modify"
         android:layout_marginTop="20dp"

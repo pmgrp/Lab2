@@ -58,6 +58,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         pickerAvailableQuantity.setMinValue(0);
         pickerAvailableQuantity.setWrapSelectorWheel(false);
 
+
         buttoncamera = (ImageButton) findViewById(R.id.camera);
 
 
@@ -75,7 +76,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         String saved_offerName = preferences.getString("offerName", null);
         String saved_offerDescription = preferences.getString("offerDescription", null);
         imagePath = preferences.getString("imgPath", null);
-        Bitmap bitmap = imagePicker.loadImageFromStorage(imagePath);
+        //Bitmap bitmap = imagePicker.loadImageFromStorage(imagePath);
        /* imagecapturephoto.setImageBitmap(bitmap);
         if (savedInstanceState != null) {
             tempImageUri = savedInstanceState.getParcelable("TempUri");
@@ -91,9 +92,9 @@ public class FormularAddingAnOffer extends AppCompatActivity {
 
         if (saved_imgPath != null){
             ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
-            Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
-            if(imageView!=null)
-                imageView.setImageBitmap(imageBitmap);
+            //Bitmap imageBitmap = imagePicker.loadImageFromStorage(saved_imgPath);
+            //if(imageView!=null)
+                //imageView.setImageBitmap(imageBitmap);
         }
         TextView textView;
         textView = (TextView) findViewById(R.id.editOffer_Name);
@@ -279,7 +280,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         //int offerPrice = (int) findViewById(R.id.picker_price);
         ImageView imageView = (ImageView) findViewById(R.id.capturephoto);
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        imagePath = imagePicker.saveToInternalStorage(bitmap,this);
+        //imagePath = imagePicker.saveToInternalStorage(bitmap,this);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("imgPath", imagePath);
