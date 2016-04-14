@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +19,13 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShowOffer extends AppCompatActivity {
     ArrayList<DailyOffer> dailyOffers;
@@ -40,35 +48,50 @@ public class ShowOffer extends AppCompatActivity {
             }
         });
 
-        //////// MAKE DATA ///////////
-        dailyOffers = new ArrayList<>();
-        DailyOffer d1 = new DailyOffer();
-        d1.setName("Pizza");
-        String imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                getResources().getResourcePackageName(R.drawable.pizza) + '/' +
-                getResources().getResourceTypeName(R.drawable.pizza) + '/' +
-                getResources().getResourceEntryName(R.drawable.pizza);
-        d1.setPhoto(imagePath);
-        dailyOffers.add(d1);
+        //get data from shared preferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String dataString = preferences.getString("dailyOffers",null);
 
-        DailyOffer d2 = new DailyOffer();
-        d2.setName("Pasta");
-        imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                getResources().getResourcePackageName(R.drawable.pasta) + '/' +
-                getResources().getResourceTypeName(R.drawable.pasta) + '/' +
-                getResources().getResourceEntryName(R.drawable.pasta);
-        d2.setPhoto(imagePath);
-        dailyOffers.add(d2);
+        if(dataString != null) {
+            Gson gson = new Gson();
+            dailyOffers = gson.fromJson(dataString, new TypeToken<List<DailyOffer>>() {}.getType());
+        }
 
-        DailyOffer d3 = new DailyOffer();
-        d3.setName("Chicken");
-        imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                getResources().getResourcePackageName(R.drawable.pollo) + '/' +
-                getResources().getResourceTypeName(R.drawable.pollo) + '/' +
-                getResources().getResourceEntryName(R.drawable.pollo);
-        d3.setPhoto(imagePath);
-        dailyOffers.add(d3);
-        //////// END DATA /////////
+        else {
+
+            //////// MAKE DATA ///////////
+            dailyOffers = new ArrayList<>();
+            DailyOffer d1 = new DailyOffer();
+            d1.setName("Pizza");
+            String imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                    getResources().getResourcePackageName(R.drawable.pizza) + '/' +
+                    getResources().getResourceTypeName(R.drawable.pizza) + '/' +
+                    getResources().getResourceEntryName(R.drawable.pizza);
+            d1.setPhoto(imagePath);
+            d1.setDescription("Really good pizza");
+            d1.setPrice(10);
+            d1.setAvailability(20);
+            dailyOffers.add(d1);
+
+            DailyOffer d2 = new DailyOffer();
+            d2.setName("Pasta");
+            imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                    getResources().getResourcePackageName(R.drawable.pasta) + '/' +
+                    getResources().getResourceTypeName(R.drawable.pasta) + '/' +
+                    getResources().getResourceEntryName(R.drawable.pasta);
+            d2.setPhoto(imagePath);
+            dailyOffers.add(d2);
+
+            DailyOffer d3 = new DailyOffer();
+            d3.setName("Chicken");
+            imagePath = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                    getResources().getResourcePackageName(R.drawable.pollo) + '/' +
+                    getResources().getResourceTypeName(R.drawable.pollo) + '/' +
+                    getResources().getResourceEntryName(R.drawable.pollo);
+            d3.setPhoto(imagePath);
+            dailyOffers.add(d3);
+            //////// END DATA /////////
+        }
 
 
         //make grid view
@@ -128,6 +151,19 @@ public class ShowOffer extends AppCompatActivity {
         });
         builder.show();
 
+    }
+
+    //save alla data when switch activity
+    @Override
+    public void onPause(){
+        super.onPause();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson2 = new Gson();
+        JsonElement element = gson2.toJsonTree(dailyOffers, new TypeToken<List<DailyOffer>>(){}.getType());
+        JsonArray jsonArray = element.getAsJsonArray();
+        editor.putString("dailyOffers", jsonArray.toString());
+        editor.commit();
     }
 
 }

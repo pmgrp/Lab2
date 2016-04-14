@@ -28,7 +28,8 @@
             android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
 
-        <activity android:name=".FormularAddingAnOffer"
+        <activity
+            android:name=".FormularAddingAnOffer"
             android:label="@string/title_activity_formular_adding_an_offer"
             android:parentActivityName=".ShowOffer">
         <meta-data
@@ -37,9 +38,11 @@
         </activity>
 
 
-        <activity android:name=".ActivityDailyOffer"
+        <activity
+            android:name=".ActivityDailyOffer"
             android:label="@string/title_activity_daily_offer"
-            android:parentActivityName=".ShowOffer">
+            android:parentActivityName=".ShowOffer"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.ShowOffer" />
@@ -47,7 +50,8 @@
 
         <activity android:name=".ModifyOffer"
             android:label="@string/title_activity_modify_offer"
-            android:parentActivityName=".ActivityDailyOffer">
+            android:parentActivityName=".ActivityDailyOffer"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityDailyOffer" />

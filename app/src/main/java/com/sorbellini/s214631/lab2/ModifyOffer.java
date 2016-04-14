@@ -15,6 +15,8 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,11 +24,18 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModifyOffer extends AppCompatActivity {
 
@@ -38,18 +47,37 @@ public class ModifyOffer extends AppCompatActivity {
     private ImageView imagecapturephoto;
     private ImageButton buttoncamera;
 
+
+    //Data
+    ArrayList<DailyOffer> dailyOffers;
+    //index
+    int index;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_offer);
+        //toolbar part
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //here takes data from saved resources and get index from previous activity
+        Bundle b = getIntent().getExtras();
+        index = b.getInt("index");
 
-        pickerPrice = (NumberPicker) findViewById(R.id.picker_Price_modify);
+        //get data from shared preferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String dataString = preferences.getString("dailyOffers",null);
+        Gson gson = new Gson();
+        dailyOffers = gson.fromJson(dataString, new TypeToken<List<DailyOffer>>(){}.getType());
+
+
+        pickerPrice = (NumberPicker) findViewById(R.id.picker_price_modify);
         pickerPrice.setMaxValue(1000);
         pickerPrice.setMinValue(0);
         pickerPrice.setWrapSelectorWheel(false);
         pickerPrice.setValue(10);
 
-        pickerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_AvailableQuantity_modify);
+        pickerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_availablequantity_modify);
         pickerAvailableQuantity.setMaxValue(1000);
         pickerAvailableQuantity.setMinValue(0);
         pickerAvailableQuantity.setValue(10);
@@ -65,6 +93,26 @@ public class ModifyOffer extends AppCompatActivity {
             }
         });
 
+        //set Values from retrieved data
+        //set image
+        ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
+        imageView.setImageURI(Uri.parse(dailyOffers.get(index).getPhoto()));
+        //set name
+        TextView textView = (TextView) findViewById(R.id.offer_name_modify);
+        textView.setText(dailyOffers.get(index).getName());
+        //set description
+        textView = (TextView) findViewById(R.id.editoffer_description_modify);
+        textView.setText(dailyOffers.get(index).getDescription());
+        //set price
+        NumberPicker numPicker = (NumberPicker)findViewById(R.id.picker_price_modify);
+        numPicker.setValue(dailyOffers.get(index).getPrice());
+        //set availability
+        numPicker = (NumberPicker)findViewById(R.id.picker_availablequantity_modify);
+        numPicker.setValue(dailyOffers.get(index).getAvailability());
+
+
+
+        /*
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String saved_offerName = preferences.getString("offerNameModify", null);
         String saved_offerDescription = preferences.getString("offerDescriptionModify", null);
@@ -115,6 +163,7 @@ public class ModifyOffer extends AppCompatActivity {
     public void backToViewOffer(View view) {
         Intent intent = new Intent(ModifyOffer.this, ActivityDailyOffer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("index", index);
         startActivity(intent);
     }
 
@@ -122,17 +171,25 @@ public class ModifyOffer extends AppCompatActivity {
 
     public void saveData2(View view) {
         //save data to shared preferences
-        EditText editText = (EditText) findViewById(R.id.editOffer_Name_modify);
+        EditText editText = (EditText) findViewById(R.id.offer_name_modify);
         String offerName = editText.getText().toString();
-        editText = (EditText) findViewById(R.id.editOffer_Description_modify);
+        editText = (EditText) findViewById(R.id.editoffer_description_modify);
         String offerDescription = editText.getText().toString();
-        NumberPicker offerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_AvailableQuantity_modify);
-        NumberPicker offerPrice = (NumberPicker) findViewById(R.id.picker_Price_modify);
+        NumberPicker offerAvailableQuantity = (NumberPicker) findViewById(R.id.picker_availablequantity_modify);
+        NumberPicker offerPrice = (NumberPicker) findViewById(R.id.picker_price_modify);
         int valuePrice=offerPrice.getValue();
         int valueAvailableQuantity=offerAvailableQuantity.getValue();
         ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
         imagePath = imagePicker.saveToInternalStorage(bitmap,this);
+
+        dailyOffers.get(index).setPhoto(imagePath);
+        dailyOffers.get(index).setName(offerName);
+        dailyOffers.get(index).setDescription(offerDescription);
+        dailyOffers.get(index).setPrice(valuePrice);
+        dailyOffers.get(index).setAvailability(valueAvailableQuantity);
+
+        /*
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("imgPathModify", imagePath);
@@ -141,8 +198,10 @@ public class ModifyOffer extends AppCompatActivity {
         editor.putInt("AvailableQuantityModify", valueAvailableQuantity);
         editor.putInt("PriceModify", valuePrice);
         editor.commit();
+        */
 
         Intent intent = new Intent(this, ActivityDailyOffer.class);
+        intent.putExtra("index", index);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
@@ -225,5 +284,19 @@ public class ModifyOffer extends AppCompatActivity {
             bm = BitmapFactory.decodeFile(selectedImagePath, options);
             imagecapturephoto.setImageBitmap(bm);
         }
+    }
+
+
+    //saves all data when another activity is started
+    @Override
+    public void onPause(){
+        super.onPause();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson2 = new Gson();
+        JsonElement element = gson2.toJsonTree(dailyOffers, new TypeToken<List<DailyOffer>>(){}.getType());
+        JsonArray jsonArray = element.getAsJsonArray();
+        editor.putString("dailyOffers", jsonArray.toString());
+        editor.commit();
     }
 }

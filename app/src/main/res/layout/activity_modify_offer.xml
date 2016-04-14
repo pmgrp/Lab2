@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/tool_bar" />
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -18,8 +28,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/capturephoto_modify"
-        android:background="@mipmap/daily_offer"/>
+        android:id="@+id/capturephoto_modify"/>
     <TextView
         android:id="@+id/offer_title_modify"
         android:layout_marginTop="20dp"
@@ -30,7 +39,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"/>
     <EditText
-        android:id="@+id/editOffer_Name_modify"
+        android:id="@+id/offer_name_modify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -45,7 +54,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"/>
     <EditText
-        android:id="@+id/editOffer_Description_modify"
+        android:id="@+id/editoffer_description_modify"
         android:layout_width="match_parent"
         android:inputType="text"
         android:layout_height="wrap_content"
@@ -66,7 +75,7 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/linearLayout2_modify">
             <TextView
-                android:id="@+id/editOffer_Price_modify"
+                android:id="@+id/editoffer_price_modify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -78,7 +87,7 @@
                 android:layout_width="50dp"
                 android:layout_height="73dp"
                 android:layout_gravity="center"
-                android:id="@+id/picker_Price_modify"/>
+                android:id="@+id/picker_price_modify"/>
 
         </LinearLayout>
 
@@ -92,7 +101,7 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/linearLayout_modify">
             <TextView
-                android:id="@+id/editOffer_AvailableQuantity_modify"
+                android:id="@+id/editoffer_availablequantity_modify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -104,14 +113,14 @@
                 android:layout_width="50dp"
                 android:layout_height="79dp"
                 android:layout_gravity="center"
-                android:id="@+id/picker_AvailableQuantity_modify"/>
+                android:id="@+id/picker_availablequantity_modify"/>
 
         </LinearLayout>
         <Button
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:text="@string/save"
-            android:id="@+id/offerSave_modify"
+            android:id="@+id/offersave_modify"
             android:layout_gravity="center"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
@@ -132,3 +141,5 @@
     </RelativeLayout>
 
 </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+
