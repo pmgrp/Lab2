@@ -69,7 +69,7 @@ public class ActivityAddOffer extends AppCompatActivity {
             Gson gson = new Gson();
             dailyOffers = gson.fromJson(dataString, new TypeToken<List<DailyOffer>>() {
             }.getType());
-            index = dailyOffers.size();
+            index = dailyOffers.size()+1;
         }
         //else create a new array list
         else{
@@ -108,7 +108,7 @@ public class ActivityAddOffer extends AppCompatActivity {
         dailyOffer.setPrice(offerPrice);
         dailyOffer.setAvailability(offerAvailability);
         if(image != null) {
-            dailyOffers.get(index).setPhoto(image);
+            dailyOffer.setPhoto(image);
         }
         //save object in array
         dailyOffers.add(dailyOffer);
