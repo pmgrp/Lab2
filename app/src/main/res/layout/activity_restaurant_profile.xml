@@ -13,84 +13,127 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/include"
-        android:layout_alignLeft="@+id/include"
-        android:layout_alignStart="@+id/include"
-        android:layout_marginTop="50dp">
+        android:padding="16dp"
+        >
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_text_title"
+            android:text="Restaurant Name "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/restaurantName"
             android:hint="Restaurant Name"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="72dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textAlignment="center" />
+            android:layout_below="@id/name_text_title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:paddingBottom="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_phone_title"
+            android:text="Restaurant Phone "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:layout_below="@id/restaurantName"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/restaurantPhone"
-            android:ems="10"
             android:hint="Restaurant Phone Number"
-            android:layout_below="@+id/restaurantName"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/restaurantName"
-            android:layout_alignEnd="@+id/restaurantName"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_below="@id/name_phone_title"
+            android:textSize="16dp"
+            android:paddingBottom="16dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:id="@+id/name_address_title"
+            android:text="Restaurant Address "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:layout_below="@id/restaurantPhone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/restaurantAddress"
             android:hint="Restaurant Address"
-            android:layout_below="@+id/restaurantPhone"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/restaurantPhone"
-            android:layout_alignEnd="@+id/restaurantPhone"
-            android:textAlignment="center" />
+            android:layout_below="@id/name_address_title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:paddingBottom="16dp"/>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:id="@+id/name_email_title"
+            android:text="Email "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:layout_below="@id/restaurantAddress"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/restaurantEmail"
             android:hint="Email"
-            android:layout_below="@+id/restaurantAddress"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/restaurantAddress"
-            android:layout_alignEnd="@+id/restaurantAddress"
-            android:textAlignment="center" />
+            android:layout_below="@+id/name_email_title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:paddingBottom="16dp"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_website_title"
+            android:text="Website "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:layout_below="@id/restaurantEmail"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/restaurantWebsite"
             android:hint="Website"
-            android:layout_below="@+id/restaurantEmail"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/restaurantEmail"
-            android:layout_alignEnd="@+id/restaurantEmail"
-            android:textAlignment="center" />
+            android:layout_below="@+id/name_website_title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:paddingBottom="16dp"/>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:id="@+id/name_partita_title"
+            android:text="Partita IVA "
+            android:textSize="20sp"
+            android:textColor="@color/dark_text_color"
+            android:layout_below="@id/restaurantWebsite"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/restaurantIVA"
             android:hint="Partita IVA"
-            android:layout_below="@+id/restaurantWebsite"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/restaurantWebsite"
-            android:layout_alignEnd="@+id/restaurantWebsite"
-            android:textAlignment="center" />
+            android:layout_below="@+id/name_partita_title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:paddingBottom="16dp"/>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
