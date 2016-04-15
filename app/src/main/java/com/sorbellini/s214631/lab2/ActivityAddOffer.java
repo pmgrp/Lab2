@@ -46,7 +46,7 @@ public class ActivityAddOffer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_formular_adding_an_offer);
+        setContentView(R.layout.activity_add_offer);
         imagecapturephoto = (ImageView) findViewById(R.id.capturephoto);
         pickerPrice = (NumberPicker) findViewById(R.id.picker_Price);
         pickerPrice.setMaxValue(1000);
