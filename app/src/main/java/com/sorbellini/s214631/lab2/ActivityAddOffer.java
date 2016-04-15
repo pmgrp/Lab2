@@ -40,6 +40,8 @@ import java.util.List;
 public class ActivityAddOffer extends AppCompatActivity {
 
     private static final int PICK_IMAGE_ID = 234;
+    String image = null;
+
 
     //Data
     ArrayList<DailyOffer> dailyOffers;
@@ -104,6 +106,9 @@ public class ActivityAddOffer extends AppCompatActivity {
         dailyOffer.setDescription(offerDescription);
         dailyOffer.setPrice(offerPrice);
         dailyOffer.setAvailability(offerAvailability);
+        if(image != null) {
+            dailyOffers.get(index).setPhoto(image);
+        }
         //save object in array
         dailyOffers.add(dailyOffer);
 
@@ -133,7 +138,7 @@ public class ActivityAddOffer extends AppCompatActivity {
                 if(imageBitmap != null) {
                     imageView.setImageBitmap(imageBitmap);
                     String dirPath = imagePicker.saveToInternalStorage(imageBitmap, this, "/offer" + index + ".jpg");
-                    dailyOffer.setPhoto(dirPath + "/offer" + index + ".jpg");
+                    image = dirPath + "/offer" + index + ".jpg";
                 }
 
             default:

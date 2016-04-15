@@ -28,6 +28,7 @@ public class ActivityModifyOffer extends AppCompatActivity {
     private NumberPicker pickerPrice = null;
     private NumberPicker pickerAvailableQuantity = null;
     private static final int PICK_IMAGE_ID = 234;
+    String image = null;
 
     //Data
     ArrayList<DailyOffer> dailyOffers;
@@ -115,6 +116,9 @@ public class ActivityModifyOffer extends AppCompatActivity {
         dailyOffers.get(index).setDescription(offerDescription);
         dailyOffers.get(index).setPrice(valuePrice);
         dailyOffers.get(index).setAvailability(valueAvailableQuantity);
+        if(image != null) {
+            dailyOffers.get(index).setPhoto(image);
+        }
 
 
         Intent intent = new Intent(this, ActivityDisplayOffer.class);
@@ -135,7 +139,8 @@ public class ActivityModifyOffer extends AppCompatActivity {
                 if(imageBitmap != null) {
                     imageView.setImageBitmap(imageBitmap);
                     String dirPath = imagePicker.saveToInternalStorage(imageBitmap, this, "/offer" + index + ".jpg");
-                    dailyOffers.get(index).setPhoto(dirPath + "/offer" + index + ".jpg");
+                    //dailyOffers.get(index).setPhoto(dirPath + "/offer" + index + ".jpg");
+                    image = dirPath + "/offer" + index + ".jpg";
                 }
 
             default:

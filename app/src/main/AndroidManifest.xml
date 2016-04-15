@@ -33,6 +33,7 @@
         <activity
             android:name=".ActivityAddOffer"
             android:label="@string/title_activity_formular_adding_an_offer"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ActivityShowOffers"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -42,6 +43,7 @@
         <activity
             android:name=".ActivityDisplayOffer"
             android:label="@string/title_activity_daily_offer"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ActivityShowOffers"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -51,6 +53,7 @@
         <activity
             android:name=".ActivityModifyOffer"
             android:label="@string/title_activity_modify_offer"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ActivityDisplayOffer"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
