@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShowOffer"
+            android:name=".ActivityShowOffers"
             android:label="@string/title_activity_show_offer"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,35 +29,35 @@
         </activity>
 
         <activity
-            android:name=".FormularAddingAnOffer"
+            android:name=".ActivityAddOffer"
             android:label="@string/title_activity_formular_adding_an_offer"
-            android:parentActivityName=".ShowOffer">
+            android:parentActivityName=".ActivityShowOffers">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.sorbellini.s214631.lab2.ShowOffer" />
+            android:value=".ActivityShowOffers" />
         </activity>
 
 
         <activity
-            android:name=".ActivityDailyOffer"
+            android:name=".ActivityDisplayOffer"
             android:label="@string/title_activity_daily_offer"
-            android:parentActivityName=".ShowOffer"
+            android:parentActivityName=".ActivityShowOffers"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sorbellini.s214631.lab2.ShowOffer" />
+                android:value=".ActivityShowOffers" />
         </activity>
 
-        <activity android:name=".ModifyOffer"
+        <activity android:name=".ActivityModifyOffer"
             android:label="@string/title_activity_modify_offer"
-            android:parentActivityName=".ActivityDailyOffer"
+            android:parentActivityName=".ActivityDisplayOffer"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ActivityDailyOffer" />
+                android:value=".ActivityDisplayOffer" />
         </activity>
         <activity
-            android:name=".ShowReservations"
+            android:name=".ActivityShowReservations"
             android:label="@string/title_activity_show_reservations"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -65,13 +65,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
-        <activity android:name=".ReservationDetails"
+        <activity android:name=".ActivityReservationDetails"
             android:label="@string/title_activity_show_reservation_detail"
-            android:parentActivityName=".ShowReservations"
+            android:parentActivityName=".ActivityShowReservations"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sorbellini.s214631.lab2.ShowReservations" />
+                android:value=".ActivityShowReservations" />
         </activity>
     </application>
 

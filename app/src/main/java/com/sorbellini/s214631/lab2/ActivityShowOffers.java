@@ -7,17 +7,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageButton;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -27,9 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowOffer extends AppCompatActivity {
+public class ActivityShowOffers extends AppCompatActivity {
     ArrayList<DailyOffer> dailyOffers;
-    ImageAdapter adapter;
+    AdapterShowOffers adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +91,13 @@ public class ShowOffer extends AppCompatActivity {
 
         //make grid view
         GridView gridView = (GridView) findViewById(R.id.grid_view);
-        adapter = new ImageAdapter(dailyOffers);
+        adapter = new AdapterShowOffers(dailyOffers);
         gridView.setAdapter(adapter);
 
         //set listeners on elements of grid view
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Intent intent = new Intent(ShowOffer.this, ActivityDailyOffer.class);
+                Intent intent = new Intent(ActivityShowOffers.this, ActivityDisplayOffer.class);
                 intent.putExtra("index", position);
                 startActivity(intent);
             }
@@ -119,7 +114,7 @@ public class ShowOffer extends AppCompatActivity {
 
     public void onClickPopupOptions(final AdapterView<?> parent, View v, final int position) {
         final CharSequence[] items = { "Delete", "Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(ShowOffer.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityShowOffers.this);
         builder.setTitle("Options");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -137,13 +132,13 @@ public class ShowOffer extends AppCompatActivity {
 
     public void onClickPopupOffer() {
         final CharSequence[] items = { "Yes", "No" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(ShowOffer.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityShowOffers.this);
         builder.setTitle("Do you want to add an offer_item ?");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (items[item].equals("Yes")) {
-                    startActivity(new Intent(ShowOffer.this, FormularAddingAnOffer.class));
+                    startActivity(new Intent(ActivityShowOffers.this, ActivityAddOffer.class));
                 } else if (items[item].equals("No")) {
                     dialog.dismiss();
                 }

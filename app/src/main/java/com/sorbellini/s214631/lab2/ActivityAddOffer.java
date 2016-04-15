@@ -29,7 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FormularAddingAnOffer extends AppCompatActivity {
+public class ActivityAddOffer extends AppCompatActivity {
 
     private static final int PICK_IMAGE_ID = 234;
     private Button return_menu;
@@ -133,7 +133,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         return_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FormularAddingAnOffer.this, MainActivity.class));
+                startActivity(new Intent(ActivityAddOffer.this, MainActivity.class));
             }
         });*/
     }
@@ -160,7 +160,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
 
         // TODO Miss the part of how I can get the image ?
 
-                Intent intent = new Intent(FormularAddingAnOffer.this, ShowOffer.class);
+                Intent intent = new Intent(ActivityAddOffer.this, ActivityShowOffers.class);
                 intent.putExtra("parameter name",valueName);
                 intent.putExtra("parameter description",valueDescription);
                 intent.putExtra("parameter price",valuePrice);
@@ -174,7 +174,7 @@ public class FormularAddingAnOffer extends AppCompatActivity {
 
     public void selectImage() {
         final CharSequence[] items = { "Take Photo", "Choose from Library", "Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(FormularAddingAnOffer.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityAddOffer.this);
         builder.setTitle("Offer Photo : ");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -290,14 +290,14 @@ public class FormularAddingAnOffer extends AppCompatActivity {
         //editor.putString("price", offerPrice);
         editor.commit();
 
-        Intent intent = new Intent(this, ShowOffer.class);
+        Intent intent = new Intent(this, ActivityShowOffers.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
 
     public void returnToOffers (View view) {
-        Intent intent = new Intent(FormularAddingAnOffer.this, ShowOffer.class);
+        Intent intent = new Intent(ActivityAddOffer.this, ActivityShowOffers.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

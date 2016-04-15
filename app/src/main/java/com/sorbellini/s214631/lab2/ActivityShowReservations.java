@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -18,7 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowReservations extends AppCompatActivity {
+public class ActivityShowReservations extends AppCompatActivity {
 
     static ArrayList<Reservation> reservations;
 
@@ -122,7 +121,7 @@ public class ShowReservations extends AppCompatActivity {
         RecyclerView rv = (RecyclerView) findViewById(R.id.reservations);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
-        ShResAdapter adapter = new ShResAdapter(reservations);
+        AdapterShowReservations adapter = new AdapterShowReservations(reservations);
         rv.setAdapter(adapter);
 
     }

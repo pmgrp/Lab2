@@ -1,10 +1,6 @@
 package com.sorbellini.s214631.lab2;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,26 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 /**
  * Created by eugeniosorbellini on 07/04/16.
  */
-public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationViewHolder> {
+public class AdapterShowReservations extends RecyclerView.Adapter<AdapterShowReservations.ReservationViewHolder> {
 
     ArrayList<Reservation> reservations;
 
-    ShResAdapter(ArrayList<Reservation> reservations){
+    AdapterShowReservations(ArrayList<Reservation> reservations){
         this.reservations = reservations;
     }
 
@@ -125,7 +114,7 @@ public class ShResAdapter extends RecyclerView.Adapter<ShResAdapter.ReservationV
         reservationViewHolder.cv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent in = new Intent(v.getContext(), ReservationDetails.class);
+                Intent in = new Intent(v.getContext(), ActivityReservationDetails.class);
                 in.putExtra("index", reservationViewHolder.getAdapterPosition());
                 v.getContext().startActivity(in);
             }

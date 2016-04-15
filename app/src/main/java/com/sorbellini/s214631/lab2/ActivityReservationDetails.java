@@ -8,11 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -22,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservationDetails extends AppCompatActivity {
+public class ActivityReservationDetails extends AppCompatActivity {
 
     ArrayList<Reservation> reservations;
     int index;
@@ -53,7 +50,7 @@ public class ReservationDetails extends AppCompatActivity {
         RecyclerView rv = (RecyclerView) findViewById(R.id.reservation_details);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
-        final ResDetAdapter adapter = new ResDetAdapter(reservations.get(index).orderedDishes);
+        final AdapterReservationDetails adapter = new AdapterReservationDetails(reservations.get(index).orderedDishes);
         rv.setAdapter(adapter);
 
         //buttons
@@ -78,7 +75,7 @@ public class ReservationDetails extends AppCompatActivity {
                             }
                             //set reservation as confirmed
                             reservations.get(index).setStatus(Reservation.CONFIRMED);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             v.getContext().startActivity(in);
                         }
                     });
@@ -86,7 +83,7 @@ public class ReservationDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             reservations.get(index).setStatus(Reservation.REJECTED);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             //saveData();
                             v.getContext().startActivity(in);
                         }
@@ -102,7 +99,7 @@ public class ReservationDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             reservations.get(index).setStatus(Reservation.COMPLETED);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             v.getContext().startActivity(in);
                         }
                     });
@@ -115,7 +112,7 @@ public class ReservationDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             reservations.remove(index);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             v.getContext().startActivity(in);
                         }
                     });
@@ -133,7 +130,7 @@ public class ReservationDetails extends AppCompatActivity {
                             }
                             //set reservation as confirmed
                             reservations.get(index).setStatus(Reservation.CONFIRMED);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             v.getContext().startActivity(in);
                         }
                     });
@@ -142,7 +139,7 @@ public class ReservationDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             reservations.remove(index);
-                            Intent in = new Intent(v.getContext(), ShowReservations.class);
+                            Intent in = new Intent(v.getContext(), ActivityShowReservations.class);
                             v.getContext().startActivity(in);
                         }
                     });

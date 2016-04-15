@@ -15,7 +15,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.sorbellini.s214631.lab2.ModifyOffer">
+    tools:context=".ActivityModifyOffer">
 
     <ImageView
         android:layout_width="100dp"

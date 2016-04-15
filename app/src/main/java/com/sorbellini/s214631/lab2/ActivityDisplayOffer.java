@@ -2,7 +2,6 @@ package com.sorbellini.s214631.lab2;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ActivityDailyOffer extends AppCompatActivity {
+public class ActivityDisplayOffer extends AppCompatActivity {
 
     ArrayList<DailyOffer> dailyOffers;
     int index;
@@ -84,7 +83,7 @@ public class ActivityDailyOffer extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_edit) {
-            Intent intent = new Intent(this, ModifyOffer.class);
+            Intent intent = new Intent(this, ActivityModifyOffer.class);
             intent.putExtra("index", index);
             startActivity(intent);
             return true;

@@ -26,11 +26,11 @@ import java.util.Locale;
 /**
  * Created by ISEN on 11/04/2016.
  */
-public class ImageAdapter extends BaseAdapter {
+public class AdapterShowOffers extends BaseAdapter {
 
     ArrayList<DailyOffer> dailyOffers = new ArrayList<>();
 
-    public ImageAdapter(ArrayList<DailyOffer> dailyOffers) {
+    public AdapterShowOffers(ArrayList<DailyOffer> dailyOffers) {
         this.dailyOffers = dailyOffers;
     }
 

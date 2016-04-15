@@ -1,14 +1,11 @@
 package com.sorbellini.s214631.lab2;
 
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +15,11 @@ import java.util.Locale;
 /**
  * Created by eugeniosorbellini on 08/04/16.
  */
-public class ResDetAdapter extends RecyclerView.Adapter<ResDetAdapter.DishViewHolder> {
+public class AdapterReservationDetails extends RecyclerView.Adapter<AdapterReservationDetails.DishViewHolder> {
 
     ArrayList<Dish> orderedDishes;
 
-    ResDetAdapter(ArrayList<Dish> orderedDishes){
+    AdapterReservationDetails(ArrayList<Dish> orderedDishes){
         this.orderedDishes = orderedDishes;
     }
 

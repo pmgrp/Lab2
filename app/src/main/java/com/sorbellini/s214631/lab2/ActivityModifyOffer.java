@@ -1,26 +1,15 @@
 package com.sorbellini.s214631.lab2;
 
-import android.app.AlertDialog;
-import android.content.CursorLoader;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -30,15 +19,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifyOffer extends AppCompatActivity {
+public class ActivityModifyOffer extends AppCompatActivity {
 
 
     private NumberPicker pickerPrice = null;
@@ -107,7 +91,7 @@ public class ModifyOffer extends AppCompatActivity {
 
 
     public void backToViewOffer(View view) {
-        Intent intent = new Intent(ModifyOffer.this, ActivityDailyOffer.class);
+        Intent intent = new Intent(ActivityModifyOffer.this, ActivityDisplayOffer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("index", index);
         startActivity(intent);
@@ -132,7 +116,7 @@ public class ModifyOffer extends AppCompatActivity {
         dailyOffers.get(index).setAvailability(valueAvailableQuantity);
 
 
-        Intent intent = new Intent(this, ActivityDailyOffer.class);
+        Intent intent = new Intent(this, ActivityDisplayOffer.class);
         intent.putExtra("index", index);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
