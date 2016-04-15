@@ -119,21 +119,9 @@
             android:text="@string/save"
             android:id="@+id/add_offer_save"
             android:layout_gravity="center"
+            android:onClick="saveData"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="75dp"
-            android:layout_marginEnd="75dp"
-            android:onClick="saveData" />
-
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:text="@string/cancel"
-            android:id="@+id/add_offer_discard"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/linearLayout2"
-            android:onClick="discardButton" />
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </LinearLayout>
