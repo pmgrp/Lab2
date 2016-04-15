@@ -11,7 +11,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:padding="40dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -25,7 +25,7 @@
                 android:id="@+id/details"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_image_test"
+                android:src="@drawable/profile"
                 android:scaleType="fitXY"/>
             <TextView
                 android:id="@+id/details_text"
@@ -37,14 +37,16 @@
                 android:id="@+id/reservation"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_image_test"
-                android:onClick="showReservations"/>
+                android:src="@drawable/reservation"
+                android:onClick="showReservations"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:id="@+id/reservation_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Show Reservations!"/>
+                android:text="Show Reservations"
+                android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,13 +59,14 @@
                 android:id="@+id/daily_offer"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_image_test"/>
+                android:src="@drawable/dailyoffer"/>
             <TextView
                 android:id="@+id/daily_offer_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Daily Offer" />
+                android:text="Daily Offer"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </RelativeLayout>
