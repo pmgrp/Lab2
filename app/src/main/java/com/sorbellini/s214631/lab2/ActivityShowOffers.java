@@ -39,7 +39,8 @@ public class ActivityShowOffers extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickPopupOffer();
+                //onClickPopupOffer();
+                startActivity(new Intent(ActivityShowOffers.this, ActivityAddOffer.class));
             }
         });
 
@@ -130,6 +131,7 @@ public class ActivityShowOffers extends AppCompatActivity {
         builder.show();
     }
 
+    /*
     public void onClickPopupOffer() {
         final CharSequence[] items = { "Yes", "No" };
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityShowOffers.this);
@@ -145,8 +147,8 @@ public class ActivityShowOffers extends AppCompatActivity {
             }
         });
         builder.show();
-
     }
+    */
 
     //save alla data when switch activity
     @Override

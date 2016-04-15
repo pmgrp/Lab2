@@ -59,7 +59,7 @@ public class ActivityDisplayOffer extends AppCompatActivity {
         }
 
         textView = (TextView) findViewById(R.id.daily_offer_price_number);
-        textView.setText(String.format(Locale.getDefault(),"%d", dailyOffers.get(index).getPrice()));
+        textView.setText(String.format(Locale.getDefault(),"%d", dailyOffers.get(index).getPrice()) + '€');
         textView = (TextView) findViewById(R.id.daily_available_quantity_number);
         textView.setText(String.format(Locale.getDefault(),"%d", dailyOffers.get(index).getAvailability()));
 

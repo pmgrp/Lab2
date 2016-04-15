@@ -25,7 +25,8 @@
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/add_offer_photo"
-        android:onClick="addOfferPhoto"/>
+        android:onClick="addOfferPhoto"
+        android:src="@mipmap/daily_offer"/>
     <TextView
         android:id="@+id/add_offer_name_title"
         android:layout_marginTop="20dp"

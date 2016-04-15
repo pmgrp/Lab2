@@ -27,6 +27,7 @@ public class ActivityModifyOffer extends AppCompatActivity {
 
     private NumberPicker pickerPrice = null;
     private NumberPicker pickerAvailableQuantity = null;
+    String dirPath;
     private static final int PICK_IMAGE_ID = 234;
     String image = null;
 
@@ -103,6 +104,7 @@ public class ActivityModifyOffer extends AppCompatActivity {
 
     public void saveData2(View view) {
         //save data to shared preferences
+        dailyOffers.get(index).setPhoto(dirPath + "/offer" + index + ".jpg");
         EditText editText = (EditText) findViewById(R.id.offer_name_modify);
         String offerName = editText.getText().toString();
         editText = (EditText) findViewById(R.id.editoffer_description_modify);
@@ -129,7 +131,7 @@ public class ActivityModifyOffer extends AppCompatActivity {
 
 
     //saves all data when another activity is started
-
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
@@ -141,6 +143,23 @@ public class ActivityModifyOffer extends AppCompatActivity {
                     String dirPath = imagePicker.saveToInternalStorage(imageBitmap, this, "/offer" + index + ".jpg");
                     //dailyOffers.get(index).setPhoto(dirPath + "/offer" + index + ".jpg");
                     image = dirPath + "/offer" + index + ".jpg";
+                }
+
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+                break;
+        }
+    }*/
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ImageView imageView = (ImageView) findViewById(R.id.capturephoto_modify);
+        switch(requestCode) {
+            case PICK_IMAGE_ID:
+                Bitmap imageBitmap = imagePicker.getImageFromResult(this, resultCode, data);
+                if(imageBitmap != null) {
+                    imageView.setImageBitmap(imageBitmap);
+                    dirPath = imagePicker.saveToInternalStorage(imageBitmap, this, "/offer" + index + ".jpg");
+                    //dailyOffers.get(index).setPhoto(dirPath + "/offer" + index + ".jpg");
                 }
 
             default:

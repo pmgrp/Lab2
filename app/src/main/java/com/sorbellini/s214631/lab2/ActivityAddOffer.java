@@ -47,6 +47,7 @@ public class ActivityAddOffer extends AppCompatActivity {
     ArrayList<DailyOffer> dailyOffers;
     DailyOffer dailyOffer = new DailyOffer();
     int index = 0;
+    public String dirPath;
 
 
     @Override
@@ -123,11 +124,12 @@ public class ActivityAddOffer extends AppCompatActivity {
         startActivityForResult(chooseImageIntent, PICK_IMAGE_ID);
     }
 
+    /*
     public void discardButton(View view) {
         Intent intent = new Intent(ActivityAddOffer.this, ActivityShowOffers.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -146,6 +148,7 @@ public class ActivityAddOffer extends AppCompatActivity {
                 break;
         }
     }
+
 
     @Override
     public void onPause(){

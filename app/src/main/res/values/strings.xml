@@ -13,7 +13,7 @@
     <string name="dialog_title">Add Photo</string>
     <string name="daily_offer_name">Offer of the Day</string>
     <string name="description_daily_offer">This offer is the offer of the day</string>
-    <string name="price_number">5€</string>
+    <string name="price_number">5</string>
     <string name="available_quantity_number">100</string>
     <string name="title_activity_show_reservations">Reservations</string>
     <string name="title_activity_show_reservation_detail">Ordered Dishes</string>
