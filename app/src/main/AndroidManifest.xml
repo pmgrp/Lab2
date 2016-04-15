@@ -31,8 +31,9 @@
         <activity
             android:name=".ActivityAddOffer"
             android:label="@string/title_activity_formular_adding_an_offer"
-            android:parentActivityName=".ActivityShowOffers">
-        <meta-data
+            android:parentActivityName=".ActivityShowOffers"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".ActivityShowOffers" />
         </activity>
