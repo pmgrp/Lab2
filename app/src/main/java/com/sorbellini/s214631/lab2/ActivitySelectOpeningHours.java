@@ -3,7 +3,7 @@ package com.sorbellini.s214631.lab2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SelectOpeningHours extends AppCompatActivity {
+public class ActivitySelectOpeningHours extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

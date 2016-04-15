@@ -75,9 +75,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityShowReservations" />
         </activity>
-        <activity android:name=".RestaurantProfile" />
-        <activity android:name=".EditRestaurantProfile" />
-        <activity android:name=".SelectOpeningHours"></activity>
+        <activity android:name=".ActivityRestaurantProfile"
+            android:label="@string/title_activity_restaurant_profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sorbellini.s214631.lab2.MainActivity" />
+        </activity>
+        <activity android:name=".ActivityEditRestaurantProfile"
+        android:label="@string/title_activity_edit_restaurant_profile"
+        android:parentActivityName=".ActivityRestaurantProfile"
+        android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.sorbellini.s214631.lab2.ActivityRestaurantProfile" />
+        </activity>
+
+        <activity android:name=".ActivitySelectOpeningHours">
+        </activity>
     </application>
 
 </manifest>

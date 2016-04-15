@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openRestaurantProfile(View view) {
 
-        Intent in = new Intent(this, RestaurantProfile.class);
+        Intent in = new Intent(this, ActivityRestaurantProfile.class);
         startActivity(in);
     }
 }

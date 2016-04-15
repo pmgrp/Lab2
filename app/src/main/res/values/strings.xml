@@ -21,4 +21,7 @@
     <string name="title_activity_daily_offer">Daily Offer</string>
     <string name="title_activity_formular_adding_an_offer">Add an Offer</string>
     <string name="title_activity_modify_offer">Modify my Offer</string>
+    <string name="title_activity_restaurant_profile">Restaurant Profile</string>
+    <string name="title_activity_edit_restaurant_profile">Edit Profile</string>
+
 </resources>
