@@ -41,6 +41,7 @@ public class ActivityModifyOffer extends AppCompatActivity {
         //toolbar part
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //here takes data from saved resources and get index from previous activity
         Bundle b = getIntent().getExtras();
         index = b.getInt("index");

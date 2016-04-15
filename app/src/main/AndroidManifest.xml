@@ -38,8 +38,8 @@
             android:parentActivityName=".ActivityShowOffers"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ActivityShowOffers" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sorbellini.s214631.lab2.ActivityShowOffers" />
         </activity>
 
 
@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ActivityDisplayOffer" />
+                android:value="com.sorbellini.s214631.lab2.ActivityDisplayOffer" />
         </activity>
         <activity
             android:name=".ActivityShowReservations"

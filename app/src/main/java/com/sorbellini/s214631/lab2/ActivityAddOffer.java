@@ -52,9 +52,11 @@ public class ActivityAddOffer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_offer);
 
+
         //toolbar part
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get data from shared preferences
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
