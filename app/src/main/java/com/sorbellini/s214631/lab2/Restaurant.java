@@ -15,22 +15,22 @@ public class Restaurant {
     private String restaurantEmail;
     private String restaurantWebsite;
     private String restaurantPiva;
-    private Bitmap restaurantPhoto;
+    private String restaurantPhoto;
     private OpeningHours openingHours;
     public ArrayList<Reservation> reservations;
-    //public ArrayList<ActivityDisplayOffer> dailyOffers;
+    public ArrayList<DailyOffer> dailyOffers;
 
     public Restaurant(){
-        this.restaurantName = null;
-        this.restaurantPhone = null;
-        this.restaurantAddress = null;
-        this.restaurantEmail = null;
-        this.restaurantWebsite = null;
-        this.restaurantPiva = null;
-        this.restaurantPhoto = null;
+        this.restaurantName = "";
+        this.restaurantPhone = "";
+        this.restaurantAddress = "";
+        this.restaurantEmail = "";
+        this.restaurantWebsite = "";
+        this.restaurantPiva = "";
+        this.restaurantPhoto = "";
         this.openingHours = null;
         this.reservations = null;
-        //this.dailyOffers = null;
+        this.dailyOffers = null;
     }
 
 
@@ -59,7 +59,7 @@ public class Restaurant {
         return restaurantPiva;
     }
 
-    public Bitmap getRestaurantPhoto(){
+    public String getRestaurantPhoto(){
         return restaurantPhoto;
     }
 
@@ -91,7 +91,7 @@ public class Restaurant {
         this.restaurantPiva = restaurantPiva;
     }
 
-    public void setRestaurantPhoto(Bitmap restaurantPhoto){
+    public void setRestaurantPhoto(String restaurantPhoto){
         this.restaurantPhoto = restaurantPhoto;
     }
 

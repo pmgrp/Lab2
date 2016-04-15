@@ -43,6 +43,9 @@ public class ActivityRestaurantProfile extends AppCompatActivity {
             txt = (TextView) findViewById(R.id.restaurantIVA);
             txt.setText(obj.getRestaurantPiva());
         }
+        else {
+            obj = new Restaurant();
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
