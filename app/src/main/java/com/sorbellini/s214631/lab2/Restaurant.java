@@ -11,7 +11,7 @@ public class Restaurant {
 
     private String restaurantName;
     private String restaurantPhone;
-    private Address restaurantAddress;
+    private String restaurantAddress;
     private String restaurantEmail;
     private String restaurantWebsite;
     private String restaurantPiva;
@@ -43,7 +43,7 @@ public class Restaurant {
         return restaurantPhone;
     }
 
-    public Address getRestaurantAddress(){
+    public String getRestaurantAddress(){
         return restaurantAddress;
     }
 
@@ -75,7 +75,7 @@ public class Restaurant {
         this.restaurantPhone = restaurantPhone;
     }
 
-    public void setRestaurantAddress(Address restaurantAddress){
+    public void setRestaurantAddress(String restaurantAddress){
         this.restaurantAddress = restaurantAddress;
     }
 

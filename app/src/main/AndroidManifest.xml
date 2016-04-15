@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,22 +26,19 @@
             android:label="@string/title_activity_show_offer"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.sorbellini.s214631.lab2.MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
-
         <activity
             android:name=".ActivityAddOffer"
             android:label="@string/title_activity_formular_adding_an_offer"
             android:parentActivityName=".ActivityShowOffers"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ActivityShowOffers" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityShowOffers" />
         </activity>
-
-
         <activity
             android:name=".ActivityDisplayOffer"
             android:label="@string/title_activity_daily_offer"
@@ -52,8 +48,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityShowOffers" />
         </activity>
-
-        <activity android:name=".ActivityModifyOffer"
+        <activity
+            android:name=".ActivityModifyOffer"
             android:label="@string/title_activity_modify_offer"
             android:parentActivityName=".ActivityDisplayOffer"
             android:theme="@style/AppTheme.NoActionBar">
@@ -70,7 +66,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sorbellini.s214631.lab2.MainActivity" />
         </activity>
-        <activity android:name=".ActivityReservationDetails"
+        <activity
+            android:name=".ActivityReservationDetails"
             android:label="@string/title_activity_show_reservation_detail"
             android:parentActivityName=".ActivityShowReservations"
             android:theme="@style/AppTheme.NoActionBar">
@@ -78,6 +75,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityShowReservations" />
         </activity>
+        <activity android:name=".RestaurantProfile" />
+        <activity android:name=".EditRestaurantProfile" />
+        <activity android:name=".SelectOpeningHours"></activity>
     </application>
 
 </manifest>

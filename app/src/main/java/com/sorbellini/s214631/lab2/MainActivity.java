@@ -55,4 +55,10 @@ public class MainActivity extends AppCompatActivity {
         Intent show_reservations = new Intent(this, ActivityShowReservations.class);
         startActivity(show_reservations);
     }
+
+    public void openRestaurantProfile(View view) {
+
+        Intent in = new Intent(this, RestaurantProfile.class);
+        startActivity(in);
+    }
 }

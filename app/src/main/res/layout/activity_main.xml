@@ -29,13 +29,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/profile"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:onClick="openRestaurantProfile"/>
             <TextView
                 android:id="@+id/details_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Hello World!" />
+                android:text="Restaurant Profile" />
             <ImageView
                 android:id="@+id/reservation"
                 android:layout_width="100dp"
