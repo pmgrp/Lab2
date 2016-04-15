@@ -98,7 +98,7 @@ public class AdapterShowReservations extends RecyclerView.Adapter<AdapterShowRes
                 reservationViewHolder.cv.setCardBackgroundColor(color);
                 break;
             case Reservation.COMPLETED:
-                reservationViewHolder.reservationStatus.setText(R.string.reservations_rejected);
+                reservationViewHolder.reservationStatus.setText(R.string.reservations_completed);
                 reservationViewHolder.lunchTime.setVisibility(View.INVISIBLE);
                 reservationViewHolder.lunchTimeTitle.setVisibility(View.INVISIBLE);
                 color = ContextCompat.getColor(reservationViewHolder.cv.getContext(), R.color.status_completed);
